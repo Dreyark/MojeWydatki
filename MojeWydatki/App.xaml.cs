@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MojeWydatki.Data;
+using MojeWydatki.Views;
+using System;
+using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -6,11 +9,25 @@ namespace MojeWydatki
 {
     public partial class App : Application
     {
+
+        static Database database;
+
+        public static Database Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MyExpensesDb.db3"));
+                }
+                return database;
+            }
+        }
+
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new HomeView());
         }
 
         protected override void OnStart()

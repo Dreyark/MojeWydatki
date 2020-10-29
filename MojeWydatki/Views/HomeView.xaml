@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MojeWydatki.Views.HomeView">
+    <NavigationPage.TitleView>
+        <Label 
+            Text="Wydatki" 
+            TextColor="White"
+            FontSize="Title"/>
+    </NavigationPage.TitleView>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListView 
+            x:Name="listView"
+            x:FieldModifier="public"
+            ItemsSource="{Binding ExpenseList}"
+            ItemTapped="OnItemTapped"
+            HasUnevenRows="true"
+            Grid.ColumnSpan="6">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                            </Grid.ColumnDefinitions>
+                            <Label 
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding Description}"
+                                FontSize="Large"
+                                TextColor="Black"/>
+                            <Label 
+                                Grid.Row="1"
+                                Grid.Column="3"
+                                Text="{Binding Value}"
+                                FontSize="Small"
+                                TextColor="Black"/>
+                            <Label 
+                                Grid.Row="1"
+                                Grid.Column="4"
+                                Text="{Binding Date}"
+                                FontSize="Small"
+                                TextColor="Black"/>
+                            <Button
+                                x:Name="RemoveExpense"
+                                Text="X"
+                                Clicked="RemoveExpense_Clicked"
+                                Grid.Column="5"
+                                Grid.Row="1"
+                                BackgroundColor="Red"
+                                TextColor="White"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button
+            x:Name="AddExpense"
+            Grid.Row="1"
+            Margin="10"
+            BorderRadius="20"
+            Grid.Column="1"
+            BackgroundColor="DarkOrange"
+            Text="Add"
+            Clicked="AddExpense_Clicked"
+            TextColor="White"/>
+    </Grid>
+
+</ContentPage>

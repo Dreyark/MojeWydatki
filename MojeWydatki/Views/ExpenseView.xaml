@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MojeWydatki.ViewModels"
+             x:Class="MojeWydatki.Views.ExpenseView">
+    <ContentPage.BindingContext>
+        <local:ExpenseViewModel/>
+    </ContentPage.BindingContext>
+
+    <NavigationPage.TitleView>
+        <Label 
+            Text="Dodaj wydatek" 
+            TextColor="White"
+            FontSize="Title"/>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Editor 
+                Grid.Row="0"
+                Placeholder="Opis"
+                Text="{Binding TheDescription}"/>
+
+            <Editor 
+                Grid.Row="1"
+                Placeholder="Wartosc"
+                Keyboard="Numeric"
+                Text="{Binding TheValue}"/>
+
+
+            <Button 
+                Grid.Row="2" 
+                Grid.Column="0"
+                TextColor="Black"
+                BackgroundColor="LightGreen"
+                Text="Save Expense"
+                CornerRadius="10" 
+                Margin="10"
+                Command="{Binding SaveExpenseCommand}"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
