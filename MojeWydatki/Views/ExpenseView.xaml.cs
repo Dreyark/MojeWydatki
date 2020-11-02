@@ -1,4 +1,5 @@
-﻿using MojeWydatki.ViewModels;
+﻿using MojeWydatki.Models;
+using MojeWydatki.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

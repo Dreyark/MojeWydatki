@@ -35,10 +35,11 @@
                 Placeholder="Wartosc"
                 Keyboard="Numeric"
                 Text="{Binding TheValue}"/>
+            <Picker Grid.Row="2" ItemDisplayBinding="{Binding CategoryTitle}" x:Name="CategoryEntry" ItemsSource="{Binding CategoryList}" SelectedIndex="{Binding CategoryId, Mode=TwoWay}"/>
 
 
             <Button 
-                Grid.Row="2" 
+                Grid.Row="3" 
                 Grid.Column="0"
                 TextColor="Black"
                 BackgroundColor="LightGreen"

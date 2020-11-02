@@ -7,10 +7,9 @@ namespace MojeWydatki.Services
 {
     public interface IExpenseRepository
     {
-        Task Initialize();
-        Task<List<Expense>> GetExpensesAsync();
-        Task GetExpenseAsync(int id);
-        Task SaveExpenseAsync(Expense expense);
-        Task DeleteExpenseAsync(Expense expense);
+        public Task<List<Expense>> GetExpensesAsync();
+        public Task GetExpenseAsync(int id);
+        public Task SaveExpenseAsync(Expense expense);
+        public Task DeleteExpenseAsync(Expense expense);
     }
 }

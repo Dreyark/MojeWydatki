@@ -1,11 +1,18 @@
-﻿using System;
+﻿using MojeWydatki.Models.Shared;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MojeWydatki.Models
 {
-    public class Category
+    public class Category : SModel
     {
-        public string CategoryTitle;
+        public String CategoryTitle { get; set; }
+
+        public String Image { get; set; }
+
+        public Category()
+        {
+        }
     }
 }

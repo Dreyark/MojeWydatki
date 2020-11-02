@@ -24,10 +24,18 @@ namespace MojeWydatki
             }
         }
 
+        public static string DbPath
+        {
+            get
+            {
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MyExpensesDb.db3");
+            }
+        }
+
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new HomeView());
+            MainPage = new AppMasterDetailPage();
         }
 
         protected override void OnStart()

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using MojeWydatki.Models;
+using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace MojeWydatki.Data
 {
@@ -15,35 +17,40 @@ namespace MojeWydatki.Data
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Expense>().Wait();
+            _database.CreateTableAsync<Category>().Wait();
+            //Seeds();
+            Sprawdzam();
         }
 
-        public Task<List<Expense>> GetExpensesAsync()
+
+        public void Seeds()
         {
-            return _database.Table<Expense>().ToListAsync();
+            var ListItem = new List<Category>();
+            ListItem.Add(new Category { CategoryTitle = "Zakupy" });
+            ListItem.Add(new Category { CategoryTitle = "Elektronika" });
+            ListItem.Add(new Category { CategoryTitle = "Czynsz" });
+            ListItem.Add(new Category { CategoryTitle = "Transport" });
+            //Category test = new Category();
+            //test.CategoryTitle = "Uwag";
+            //test.Image = "dwa";
+            _database.InsertAllAsync(ListItem);
+        }
+        public Task<List<Category>> CatList()
+        {
+
+            //string queryString = $"SELECT CategoryTitle FROM Category";
+            //return await _database.QueryAsync<Category>(queryString).ConfigureAwait(false);
+            return _database.Table<Category>().ToListAsync();
+
         }
 
-        public Task<Expense> GetExpenseAsync(int id)
+        public async void Sprawdzam()
         {
-            return _database.Table<Expense>()
-                            .Where(i => i.ID == id)
-                            .FirstOrDefaultAsync();
-        }
-
-        public Task<int> SaveExpenseAsync(Expense expense)
-        {
-            if (expense.ID != 0)
+            var myList = await _database.Table<Expense>().ToListAsync();
+            foreach (var s in myList)
             {
-                return _database.UpdateAsync(expense);
+                Console.WriteLine(s.CategoryId);
             }
-            else
-            {
-                return _database.InsertAsync(expense);
-            }
-        }
-
-        public Task<int> DeleteExpenseAsync(Expense expense)
-        {
-            return _database.DeleteAsync(expense);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MojeWydatki.Models;
+﻿using MojeWydatki.Data;
+using MojeWydatki.Models;
 using MojeWydatki.Views;
 using System;
 using System.Collections.Generic;
@@ -9,19 +10,23 @@ using Xamarin.Forms;
 
 namespace MojeWydatki.ViewModels
 {
-    public class HomeViewModel : BaseViewModel
+    public class ExpenseListViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<Expense> ExpenseList { get; set; }
 
-        public HomeViewModel(HomeView activity)
+        ExpenseRepository expenseRep;
+
+        public ExpenseListViewModel(ExpenseListView activity)
         {
+            expenseRep = new ExpenseRepository();
+
             GetDataExpense = new Command(async () =>
             {
                 ExpenseList = new ObservableCollection<Expense>();
 
-                var iList = await App.Database.GetExpensesAsync();
+                var iList = await expenseRep.GetExpensesAsync();
 
                 foreach (Expense i in iList)
                 {
@@ -33,7 +38,7 @@ namespace MojeWydatki.ViewModels
 
             RemoveExpense = new Command<Expense>(async (Expenses) =>
             {
-                await App.Database.DeleteExpenseAsync(Expenses);
+                await expenseRep.DeleteExpenseAsync(Expenses);
                 ExpenseList.Remove(Expenses);
                 System.Diagnostics.Debug.WriteLine("Data Remove : " + Expenses.Description);
             });
