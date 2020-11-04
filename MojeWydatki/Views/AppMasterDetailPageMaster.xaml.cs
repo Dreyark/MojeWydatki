@@ -33,8 +33,9 @@ namespace MojeWydatki.Views
             {
                 MenuItems = new ObservableCollection<AppMasterDetailPageMasterMenuItem>(new[]
                 {
-                    new AppMasterDetailPageMasterMenuItem { Id = 0, Title = "Home", TargetType= typeof( HomeView) },
-                    new AppMasterDetailPageMasterMenuItem { Id = 1, Title = "Expense List" , TargetType= typeof( ExpenseListView)},
+                    new AppMasterDetailPageMasterMenuItem { Id = 0, Title = "Strona główna", TargetType= typeof( HomeView) },
+                    new AppMasterDetailPageMasterMenuItem { Id = 1, Title = "Wydatki" , TargetType= typeof( ExpenseListView)},
+                    new AppMasterDetailPageMasterMenuItem { Id = 2, Title = "Cele" , TargetType= typeof( GoalListView)},
                 });
             }
 

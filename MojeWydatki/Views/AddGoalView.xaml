@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MojeWydatki.ViewModels"
+             x:Class="MojeWydatki.Views.AddGoalView">
+    <ContentPage.BindingContext>
+        <local:GoalViewModel/>
+    </ContentPage.BindingContext>
+
+    <NavigationPage.TitleView>
+        <Label 
+            Text="Dodaj cel" 
+            TextColor="White"
+            FontSize="Title"/>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Editor 
+                Grid.Row="0"
+                Placeholder="Tytul"
+                Text="{Binding TheTitle}"/>
+
+            <Editor 
+                Grid.Row="1"
+                Placeholder="Wartosc poczatkowa"
+                Keyboard="Numeric"
+                Text="{Binding TheCurrentValue}"/>
+
+            <Editor 
+                Grid.Row="2"
+                Placeholder="Wartosc Końcowa"
+                Keyboard="Numeric"
+                Text="{Binding TheGoalValue}"/>
+
+            <DatePicker Grid.Row="3" x:Name="EndDate" Format="dd MMM yyyy" Date="{Binding TheEndDate}"/>
+
+            <Button 
+                Grid.Row="4" 
+                Grid.Column="0"
+                TextColor="Black"
+                BackgroundColor="LightGreen"
+                Text="Zapisz Cel"
+                CornerRadius="10" 
+                Margin="10"
+                Command="{Binding SaveGoalCommand}"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

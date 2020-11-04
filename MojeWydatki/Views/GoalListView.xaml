@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MojeWydatki.Views.ExpenseListView">
+             x:Class="MojeWydatki.Views.GoalListView">
     <NavigationPage.TitleView>
         <Label 
-            Text="Wydatki" 
+            Text="Cele" 
             TextColor="White"
             FontSize="Title"/>
     </NavigationPage.TitleView>
@@ -19,11 +19,10 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
         <ListView 
             x:Name="listView"
             x:FieldModifier="public"
-            ItemsSource="{Binding ExpenseList}"
+            ItemsSource="{Binding GoalList}"
             ItemTapped="OnItemTapped"
             HasUnevenRows="true"
             Grid.ColumnSpan="6">
@@ -32,7 +31,7 @@
                     <ViewCell>
                         <Grid Padding="10">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="2"/>
+                                <RowDefinition Height="3"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="5"/>
@@ -41,24 +40,39 @@
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Grid.ColumnSpan="2"
-                                Text="{Binding Description}"
+                                Text="{Binding Title}"
                                 FontSize="Large"
                                 TextColor="Black"/>
+                            <ProgressBar 
+                                x:Name="progress"
+                                ProgressColor="Green" 
+                                Grid.Row="2"
+                                Grid.ColumnSpan="4"
+                                Progress="{Binding Progress}"/>
                             <Label 
-                                Grid.Row="1"
-                                Grid.Column="3"
-                                Text="{Binding Value}"
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Text="0"
                                 FontSize="Small"
                                 TextColor="Black"/>
                             <Label 
-                                Grid.Row="1"
+                                x:Name="curVal"
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                Text="{Binding CurrentValue}"
+                                FontSize="Small"
+                                TextColor="Black"/>
+                            <Label 
+                                x:Name="goalVal"
+                                Grid.Row="2"
                                 Grid.Column="4"
-                                Text="{Binding Date}"
+                                Text="{Binding GoalValue}"
                                 FontSize="Small"
                                 TextColor="Black"/>
                             <Button
+                                x:Name="RemoveGoal"
                                 Text="X"
-                                Clicked="RemoveExpense_Clicked"
+                                Clicked="RemoveGoal_Clicked"
                                 Grid.Column="5"
                                 Grid.Row="1"
                                 BackgroundColor="Red"
@@ -70,14 +84,14 @@
         </ListView>
 
         <Button
-            x:Name="AddExpense"
+            x:Name="AddGoal"
             Grid.Row="1"
             Margin="10"
             BorderRadius="20"
             Grid.Column="1"
             BackgroundColor="DarkOrange"
             Text="Add"
-            Clicked="AddExpense_Clicked"
+            Clicked="AddGoal_Clicked"
             TextColor="White"/>
     </Grid>
 

@@ -36,7 +36,7 @@ namespace MojeWydatki.ViewModels
                 var expense = new Expense();
                 expense.Description = TheDescription;
                 expense.Value = TheValue;
-                expense.Date = DateTime.UtcNow;
+                expense.Date = DateTime.Now;
                 expense.CategoryId = CategoryId;
                 await expenseRep.SaveExpenseAsync(expense);
                 TheDescription = string.Empty;

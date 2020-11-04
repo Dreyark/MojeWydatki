@@ -18,6 +18,7 @@ namespace MojeWydatki.Data
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Expense>().Wait();
             _database.CreateTableAsync<Category>().Wait();
+            _database.CreateTableAsync<Goal>().Wait();
             //Seeds();
             Sprawdzam();
         }
@@ -30,9 +31,6 @@ namespace MojeWydatki.Data
             ListItem.Add(new Category { CategoryTitle = "Elektronika" });
             ListItem.Add(new Category { CategoryTitle = "Czynsz" });
             ListItem.Add(new Category { CategoryTitle = "Transport" });
-            //Category test = new Category();
-            //test.CategoryTitle = "Uwag";
-            //test.Image = "dwa";
             _database.InsertAllAsync(ListItem);
         }
         public Task<List<Category>> CatList()

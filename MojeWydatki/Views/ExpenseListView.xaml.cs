@@ -1,5 +1,6 @@
 ﻿using MojeWydatki.Models;
 using MojeWydatki.ViewModels;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -42,15 +43,22 @@ namespace MojeWydatki.Views
         {
             Expense tappedExpenseItem = e.Item as Expense;
 
-            var createExpenseVM = new ExpenseViewModel(tappedExpenseItem);
+            var expensePopupMenuVM = new ExpenseViewModel(tappedExpenseItem);
 
-            var createExpensePage = new ExpenseView();
+            var expensePopupMenu = new ExpensePopupMenu(tappedExpenseItem);
 
-            createExpensePage.BindingContext = createExpenseVM;
+            expensePopupMenu.CallbackEvent += (object sender, object e) => CallbackMethod();
 
-            await Navigation.PushAsync(createExpensePage);
+            expensePopupMenu.BindingContext = expensePopupMenuVM;
 
-            System.Diagnostics.Debug.WriteLine("SELECTED : " + tappedExpenseItem.ID);
+            await PopupNavigation.Instance.PushAsync(expensePopupMenu);
+
+            //System.Diagnostics.Debug.WriteLine("SELECTED : " + tappedExpenseItem.ID);
+        }
+
+        private void CallbackMethod()
+        {
+            OnAppearing();
         }
 
         private void RemoveExpense_Clicked(object sender, EventArgs e)

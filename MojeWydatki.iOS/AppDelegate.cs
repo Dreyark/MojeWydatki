@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Rg.Plugins.Popup;
 using UIKit;
 
 namespace MojeWydatki.iOS
@@ -23,6 +24,7 @@ namespace MojeWydatki.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            Popup.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
