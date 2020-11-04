@@ -29,12 +29,15 @@
                 Grid.Row="0"
                 Placeholder="Opis"
                 Text="{Binding TheDescription}"/>
-
             <Editor 
+                x:Name="Sprawdzam"
                 Grid.Row="1"
-                Placeholder="Wartosc"
+                Placeholder="0.00"
                 Keyboard="Numeric"
-                Text="{Binding TheValue}"/>
+                Text="{Binding TheValue}"
+                TextChanged="Entry_TextChanged"
+                />
+            
             <Picker Grid.Row="2" ItemDisplayBinding="{Binding CategoryTitle}" x:Name="CategoryEntry" ItemsSource="{Binding CategoryList}" SelectedIndex="{Binding CategoryId, Mode=TwoWay}"/>
 
 

@@ -44,11 +44,9 @@ namespace MojeWydatki.Views
             Expense tappedExpenseItem = e.Item as Expense;
 
             var expensePopupMenuVM = new ExpenseViewModel(tappedExpenseItem);
-
             var expensePopupMenu = new ExpensePopupMenu(tappedExpenseItem);
 
             expensePopupMenu.CallbackEvent += (object sender, object e) => CallbackMethod();
-
             expensePopupMenu.BindingContext = expensePopupMenuVM;
 
             await PopupNavigation.Instance.PushAsync(expensePopupMenu);

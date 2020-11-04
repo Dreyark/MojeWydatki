@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Dynamic;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
@@ -35,12 +36,12 @@ namespace MojeWydatki.ViewModels
             {
                 var expense = new Expense();
                 expense.Description = TheDescription;
-                expense.Value = TheValue;
+                expense.Value = Convert.ToDouble(TheValue);
                 expense.Date = DateTime.Now;
                 expense.CategoryId = CategoryId;
                 await expenseRep.SaveExpenseAsync(expense);
                 TheDescription = string.Empty;
-                TheValue = 0;
+                TheValue = "0";
                 CategoryId = -1;
             });
         }
@@ -57,19 +58,19 @@ namespace MojeWydatki.ViewModels
             }
 
             TheDescription = expenses.Description;
-            TheValue = expenses.Value;
+            TheValue = Convert.ToString(expenses.Value);
             CategoryId = expenses.CategoryId;
             System.Diagnostics.Debug.WriteLine("DATE : " + expenses.Date.ToString("dd-MM-yyyy"));
 
             SaveExpenseCommand = new Command(async () =>
             {
                 expenses.Description = TheDescription;
-                expenses.Value = TheValue;
+                expenses.Value = Convert.ToDouble(TheValue);
                 expenses.Date = DateTime.UtcNow;
                 expenses.CategoryId = CategoryId;
                 await expenseRep.SaveExpenseAsync(expenses);
                 TheDescription = string.Empty;
-                TheValue = 0;
+                TheValue = "0";
                 CategoryId = -1;
             });
         }
@@ -86,13 +87,17 @@ namespace MojeWydatki.ViewModels
             }
         }
 
-        double value;
-        public double TheValue
+        string value;
+        public string TheValue
         {
             get => value;
             set
             {
                 this.value = value;
+                if(this.value.Last() == '.')
+                {
+                    this.value = this.value.Remove(this.value.Length - 1);
+                }
                 var args = new PropertyChangedEventArgs(nameof(TheValue));
                 PropertyChanged?.Invoke(this, args);
             }

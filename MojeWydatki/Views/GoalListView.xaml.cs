@@ -52,13 +52,13 @@ namespace MojeWydatki.Views
             //System.Diagnostics.Debug.WriteLine("SELECTED : " + tappedGoalItem.ID);
         }
 
-        private void RemoveGoal_Clicked(object sender, EventArgs e)
-        {
-            var button = sender as Button;
-            var Goal = button.BindingContext as Goal;
-            var vm = BindingContext as GoalListViewModel;
-            vm.RemoveGoal.Execute(Goal);
-        }
+        //private void RemoveGoal_Clicked(object sender, EventArgs e)
+        //{
+        //    var button = sender as Button;
+        //    var Goal = button.BindingContext as Goal;
+        //    var vm = BindingContext as GoalListViewModel;
+        //    vm.RemoveGoal.Execute(Goal);
+        //}
 
     }
 }

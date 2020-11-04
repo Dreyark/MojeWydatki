@@ -56,13 +56,6 @@
                                 Text="{Binding Date}"
                                 FontSize="Small"
                                 TextColor="Black"/>
-                            <Button
-                                Text="X"
-                                Clicked="RemoveExpense_Clicked"
-                                Grid.Column="5"
-                                Grid.Row="1"
-                                BackgroundColor="Red"
-                                TextColor="White"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

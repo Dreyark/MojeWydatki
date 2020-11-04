@@ -69,14 +69,6 @@
                                 Text="{Binding GoalValue}"
                                 FontSize="Small"
                                 TextColor="Black"/>
-                            <Button
-                                x:Name="RemoveGoal"
-                                Text="X"
-                                Clicked="RemoveGoal_Clicked"
-                                Grid.Column="5"
-                                Grid.Row="1"
-                                BackgroundColor="Red"
-                                TextColor="White"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
