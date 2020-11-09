@@ -1,25 +1,25 @@
 ﻿using MojeWydatki.Models;
 using MojeWydatki.ViewModels;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace MojeWydatki.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GoalListView : ContentPage
+    public partial class GoalListView : TabbedPage
     {
-        public ObservableCollection<Goal> GoalList { get; set; }
-
         public GoalListView()
         {
-            BindingContext = new GoalListViewModel(this);
-            GoalList = new ObservableCollection<Goal>();
+            BindingContext = new GoalListViewModel();
             InitializeComponent();
 
         }
@@ -33,32 +33,26 @@ namespace MojeWydatki.Views
             base.OnAppearing();
 
             var vm = BindingContext as GoalListViewModel;
-
-            vm.GetDataGoal.Execute(GoalList);
+            await vm.MakeGoalList();
+            InProgresslistView.ItemsSource = vm.GoalList.Where(i => i.IsFinished == false);
+            CompletelistView.ItemsSource = vm.GoalList.Where(i => i.IsFinished == true);
         }
 
         async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             Goal tappedGoalItem = e.Item as Goal;
 
-            var createGoalVM = new GoalViewModel(tappedGoalItem);
+            var GoalViewModelVM = new GoalViewModel(tappedGoalItem);
+            var GoalPopupMenu = new UpdateGoalPopup(tappedGoalItem);
+            GoalPopupMenu.CallbackEvent += (object sender, object e) => CallbackMethod();
+            GoalPopupMenu.BindingContext = GoalViewModelVM;
 
-            //var createGoalPage = new AddGoalView();
-
-            //createGoalPage.BindingContext = createGoalVM;
-
-            //await Navigation.PushAsync(createGoalPage);
-
-            //System.Diagnostics.Debug.WriteLine("SELECTED : " + tappedGoalItem.ID);
+            await PopupNavigation.Instance.PushAsync(GoalPopupMenu);
         }
 
-        //private void RemoveGoal_Clicked(object sender, EventArgs e)
-        //{
-        //    var button = sender as Button;
-        //    var Goal = button.BindingContext as Goal;
-        //    var vm = BindingContext as GoalListViewModel;
-        //    vm.RemoveGoal.Execute(Goal);
-        //}
-
+        private void CallbackMethod()
+        {
+            OnAppearing();
+        }
     }
 }

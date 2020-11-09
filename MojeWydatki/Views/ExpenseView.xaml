@@ -30,12 +30,12 @@
                 Placeholder="Opis"
                 Text="{Binding TheDescription}"/>
             <Editor 
-                x:Name="Sprawdzam"
+                x:Name="Value"
                 Grid.Row="1"
                 Placeholder="0.00"
                 Keyboard="Numeric"
                 Text="{Binding TheValue}"
-                TextChanged="Entry_TextChanged"
+                TextChanged="Value_Changed"
                 />
             
             <Picker Grid.Row="2" ItemDisplayBinding="{Binding CategoryTitle}" x:Name="CategoryEntry" ItemsSource="{Binding CategoryList}" SelectedIndex="{Binding CategoryId, Mode=TwoWay}"/>

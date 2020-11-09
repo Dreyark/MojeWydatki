@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace MojeWydatki.ViewModels
@@ -18,33 +19,20 @@ namespace MojeWydatki.ViewModels
 
         GoalRepository goalRep;
 
-        public GoalListViewModel(GoalListView activity)
+        public GoalListViewModel()
         {
             goalRep = new GoalRepository();
-
-            GetDataGoal = new Command(async () =>
-            {
-                GoalList = new ObservableCollection<Goal>();
-
-                var iList = await goalRep.GetGoalsAsync();
-
-                foreach (Goal i in iList)
-                {
-                    GoalList.Add(i);
-                    activity.listView.ItemsSource = GoalList;
-                }
-
-            });
-            RemoveGoal = new Command<Goal>(async (Goals) =>
-            {
-                await goalRep.DeleteGoalAsync(Goals);
-                GoalList.Remove(Goals);
-                System.Diagnostics.Debug.WriteLine("Data Remove : " + Goals.Title);
-            });
         }
 
-        public Command GetDataGoal { get; }
+        public async Task MakeGoalList()
+        {
+            GoalList = new ObservableCollection<Goal>();
+            var iList = await goalRep.GetGoalsAsync();
 
-        public Command<Goal> RemoveGoal { get; }
+            foreach (Goal i in iList)
+            {
+                GoalList.Add(i);
+            }
+        }
     }
 }

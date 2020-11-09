@@ -46,7 +46,7 @@ namespace MojeWydatki.ViewModels
             });
         }
 
-        public ExpenseViewModel(Expense expenses)
+        public ExpenseViewModel(Expense expense)
         {
             expenseRep = new ExpenseRepository();
             CategoryList = new ObservableCollection<Category>();
@@ -57,21 +57,26 @@ namespace MojeWydatki.ViewModels
                 CategoryList.Add(i);
             }
 
-            TheDescription = expenses.Description;
-            TheValue = Convert.ToString(expenses.Value);
-            CategoryId = expenses.CategoryId;
-            System.Diagnostics.Debug.WriteLine("DATE : " + expenses.Date.ToString("dd-MM-yyyy"));
+            TheDescription = expense.Description;
+            TheValue = Convert.ToString(expense.Value);
+            CategoryId = expense.CategoryId;
+            System.Diagnostics.Debug.WriteLine("DATE : " + expense.Date.ToString("dd-MM-yyyy"));
 
             SaveExpenseCommand = new Command(async () =>
             {
-                expenses.Description = TheDescription;
-                expenses.Value = Convert.ToDouble(TheValue);
-                expenses.Date = DateTime.UtcNow;
-                expenses.CategoryId = CategoryId;
-                await expenseRep.SaveExpenseAsync(expenses);
+                expense.Description = TheDescription;
+                expense.Value = Convert.ToDouble(TheValue);
+                expense.Date = DateTime.UtcNow;
+                expense.CategoryId = CategoryId;
+                await expenseRep.SaveExpenseAsync(expense);
                 TheDescription = string.Empty;
-                TheValue = "0";
+                TheValue = string.Empty;
                 CategoryId = -1;
+            });
+
+            RemoveExpense = new Command(async () =>
+            {
+                await expenseRep.DeleteExpenseAsync(expense);
             });
         }
 
@@ -94,10 +99,18 @@ namespace MojeWydatki.ViewModels
             set
             {
                 this.value = value;
-                if(this.value.Last() == '.')
+                if (this.value == "")
                 {
-                    this.value = this.value.Remove(this.value.Length - 1);
+                    this.value = "0";
                 }
+                else
+                {
+                    if (this.value.Last() == '.')
+                    {
+                        this.value = this.value.Remove(this.value.Length - 1);
+                    }
+                }
+
                 var args = new PropertyChangedEventArgs(nameof(TheValue));
                 PropertyChanged?.Invoke(this, args);
             }
@@ -119,7 +132,7 @@ namespace MojeWydatki.ViewModels
             }
         }
 
-
+        public Command RemoveExpense { get; }
         public Command SaveExpenseCommand { get; }
         public Expense BindingContext { get; }
     }

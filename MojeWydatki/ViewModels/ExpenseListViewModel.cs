@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace MojeWydatki.ViewModels
@@ -21,31 +22,17 @@ namespace MojeWydatki.ViewModels
         public ExpenseListViewModel(ExpenseListView activity)
         {
             expenseRep = new ExpenseRepository();
-
-            GetDataExpense = new Command(async () =>
-            {
-                ExpenseList = new ObservableCollection<Expense>();
-
-                var iList = await expenseRep.GetExpensesAsync();
-
-                foreach (Expense i in iList)
-                {
-                    ExpenseList.Add(i);
-                    activity.listView.ItemsSource = ExpenseList;
-                }
-
-            });
-
-            RemoveExpense = new Command<Expense>(async (Expenses) =>
-            {
-                await expenseRep.DeleteExpenseAsync(Expenses);
-                ExpenseList.Remove(Expenses);
-                System.Diagnostics.Debug.WriteLine("Data Remove : " + Expenses.Description);
-            });
         }
 
-        public Command GetDataExpense { get; }
+        public async Task MakeExpenseList()
+        {
+            ExpenseList = new ObservableCollection<Expense>();
+            var iList = await expenseRep.GetExpensesAsync();
 
-        public Command<Expense> RemoveExpense { get; }
+            foreach (Expense i in iList)
+            {
+                ExpenseList.Add(i);
+            }
+        }
     }
 }

@@ -17,11 +17,9 @@ namespace MojeWydatki.Views
 
     public partial class ExpenseListView : ContentPage
     {
-        public ObservableCollection<Expense> ExpenseList { get; set; }
         public ExpenseListView()
         {
             BindingContext = new ExpenseListViewModel(this);
-            ExpenseList = new ObservableCollection<Expense>();
             InitializeComponent();
         }
 
@@ -35,8 +33,8 @@ namespace MojeWydatki.Views
             base.OnAppearing();
 
             var vm = BindingContext as ExpenseListViewModel;
-
-            vm.GetDataExpense.Execute(ExpenseList);
+            await vm.MakeExpenseList();
+            listView.ItemsSource = vm.ExpenseList;
         }
 
         async void OnItemTapped(object sender, ItemTappedEventArgs e)
@@ -57,14 +55,6 @@ namespace MojeWydatki.Views
         private void CallbackMethod()
         {
             OnAppearing();
-        }
-
-        private void RemoveExpense_Clicked(object sender, EventArgs e)
-        {
-            var button = sender as Button;
-            var expense = button.BindingContext as Expense;
-            var vm = BindingContext as ExpenseListViewModel;
-            vm.RemoveExpense.Execute(expense);
         }
     }
 }

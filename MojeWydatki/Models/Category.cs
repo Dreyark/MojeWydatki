@@ -9,8 +9,6 @@ namespace MojeWydatki.Models
     {
         public String CategoryTitle { get; set; }
 
-        public String Image { get; set; }
-
         public Category()
         {
         }

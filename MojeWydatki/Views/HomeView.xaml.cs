@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,11 @@ namespace MojeWydatki.Views
         public HomeView()
         {
             InitializeComponent();
+        }
+
+        async private void AddCategory_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new AddCategoryPopup());
         }
     }
 }

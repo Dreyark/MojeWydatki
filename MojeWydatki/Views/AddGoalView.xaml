@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MojeWydatki.ViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:MojeWydatki.ViewModels"
              x:Class="MojeWydatki.Views.AddGoalView">
     <ContentPage.BindingContext>
         <local:GoalViewModel/>
@@ -31,15 +32,19 @@
                 Text="{Binding TheTitle}"/>
 
             <Editor 
+                x:Name="CurrentValue"
                 Grid.Row="1"
                 Placeholder="Wartosc poczatkowa"
                 Keyboard="Numeric"
+                TextChanged="CurrentValue_Changed"
                 Text="{Binding TheCurrentValue}"/>
 
             <Editor 
+                x:Name="GoalValue"
                 Grid.Row="2"
                 Placeholder="Wartosc Końcowa"
                 Keyboard="Numeric"
+                TextChanged="GoalValue_Changed"
                 Text="{Binding TheGoalValue}"/>
 
             <DatePicker Grid.Row="3" x:Name="EndDate" Format="dd MMM yyyy" Date="{Binding TheEndDate}"/>

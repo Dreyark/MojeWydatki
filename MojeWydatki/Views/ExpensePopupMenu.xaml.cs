@@ -22,50 +22,37 @@ namespace MojeWydatki.Views
     {
         public event EventHandler<object> CallbackEvent;
         protected override void OnDisappearing() => CallbackEvent?.Invoke(this, EventArgs.Empty);
-        ExpenseRepository expenseRep;
         Expense tappedExpenseItem;
         public ExpensePopupMenu(Expense tapped)
         {
             tappedExpenseItem = tapped;
-            //Desc = tappedExpenseItem.Description;
             InitializeComponent();
-        }
-
-        public enum Orientation
-        {
-            Right_Down, Right_up, Left_Down, Left_Up
         }
 
         private async void Background_tapped(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAsync();
+            await CloseAllPopup();
         }
 
         async private void AddExpense_Clicked(object sender, EventArgs e)
         {
-            //await Navigation.PopPopupAsync();
-            //await Navigation.PushAsync(new ExpenseView());
-
             var expenseViewMV = new ExpenseViewModel(tappedExpenseItem);
             var expenseView = new ExpenseView();
             expenseView.BindingContext = expenseViewMV;
-            CloseAllPopup();
+            await CloseAllPopup();
             await ((AppMasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(expenseView);
-            //await App.Current.MainPage.Navigation.PushAsync(new ExpenseView())
-            //await CloseAllPopup();
         }
 
         private async Task CloseAllPopup()
         {
             await PopupNavigation.Instance.PopAllAsync();
-            await Navigation.PushAsync(new ExpenseView());
         }
 
         private void RemoveExpense_Clicked(object sender, EventArgs e)
         {
-            expenseRep = new ExpenseRepository();
-            expenseRep.DeleteExpenseAsync(tappedExpenseItem);
-            Background_tapped(sender,e);
+            var vm = new ExpenseViewModel(tappedExpenseItem);
+            vm.RemoveExpense.Execute(tappedExpenseItem);
+            Background_tapped(sender, e);
         }
     }
 }

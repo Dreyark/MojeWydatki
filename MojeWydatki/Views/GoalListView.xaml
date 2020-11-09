@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MojeWydatki.Views.GoalListView">
     <NavigationPage.TitleView>
@@ -8,74 +8,74 @@
             TextColor="White"
             FontSize="Title"/>
     </NavigationPage.TitleView>
+    <TabbedPage.Children>
+        <ContentPage Title="W trakcie">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <ListView 
-            x:Name="listView"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ListView 
+            x:Name="InProgresslistView"
             x:FieldModifier="public"
-            ItemsSource="{Binding GoalList}"
             ItemTapped="OnItemTapped"
             HasUnevenRows="true"
             Grid.ColumnSpan="6">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid Padding="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="3"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5"/>
-                            </Grid.ColumnDefinitions>
-                            <Label 
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="3"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label 
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Grid.ColumnSpan="2"
                                 Text="{Binding Title}"
                                 FontSize="Large"
                                 TextColor="Black"/>
-                            <ProgressBar 
+                                    <ProgressBar 
                                 x:Name="progress"
                                 ProgressColor="Green" 
                                 Grid.Row="2"
                                 Grid.ColumnSpan="4"
                                 Progress="{Binding Progress}"/>
-                            <Label 
+                                    <Label 
                                 Grid.Row="2"
                                 Grid.Column="1"
                                 Text="0"
                                 FontSize="Small"
                                 TextColor="Black"/>
-                            <Label 
+                                    <Label 
                                 x:Name="curVal"
                                 Grid.Row="2"
                                 Grid.Column="2"
                                 Text="{Binding CurrentValue}"
                                 FontSize="Small"
                                 TextColor="Black"/>
-                            <Label 
+                                    <Label 
                                 x:Name="goalVal"
                                 Grid.Row="2"
                                 Grid.Column="4"
                                 Text="{Binding GoalValue}"
                                 FontSize="Small"
                                 TextColor="Black"/>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
-        <Button
+                <Button
             x:Name="AddGoal"
             Grid.Row="1"
             Margin="10"
@@ -85,6 +85,74 @@
             Text="Add"
             Clicked="AddGoal_Clicked"
             TextColor="White"/>
-    </Grid>
+            </Grid>
+        </ContentPage>
+        <ContentPage Title="Ukończone">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-</ContentPage>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ListView 
+            x:Name="CompletelistView"
+            x:FieldModifier="public"
+            ItemTapped="OnItemTapped"
+            HasUnevenRows="true"
+            Grid.ColumnSpan="6">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="3"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label 
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding Title}"
+                                FontSize="Large"
+                                TextColor="Black"/>
+                                    <ProgressBar 
+                                x:Name="progress"
+                                ProgressColor="Green" 
+                                Grid.Row="2"
+                                Grid.ColumnSpan="4"
+                                Progress="{Binding Progress}"/>
+                                    <Label 
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Text="0"
+                                FontSize="Small"
+                                TextColor="Black"/>
+                                    <Label 
+                                x:Name="curVal"
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                Text="{Binding CurrentValue}"
+                                FontSize="Small"
+                                TextColor="Black"/>
+                                    <Label 
+                                x:Name="goalVal"
+                                Grid.Row="2"
+                                Grid.Column="4"
+                                Text="{Binding GoalValue}"
+                                FontSize="Small"
+                                TextColor="Black"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </ContentPage>
+    </TabbedPage.Children>
+</TabbedPage>

@@ -7,6 +7,13 @@
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Button 
+                TextColor="Black"   
+                BackgroundColor="LightGreen"
+                Text="Dodaj Kategorię"
+                CornerRadius="20"
+                Margin="150,20,150,140"
+                Clicked="AddCategory_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
