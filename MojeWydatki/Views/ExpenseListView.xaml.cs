@@ -49,7 +49,6 @@ namespace MojeWydatki.Views
 
             await PopupNavigation.Instance.PushAsync(expensePopupMenu);
 
-            //System.Diagnostics.Debug.WriteLine("SELECTED : " + tappedExpenseItem.ID);
         }
 
         private void CallbackMethod()

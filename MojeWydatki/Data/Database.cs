@@ -19,27 +19,24 @@ namespace MojeWydatki.Data
             _database.CreateTableAsync<Expense>().Wait();
             _database.CreateTableAsync<Category>().Wait();
             _database.CreateTableAsync<Goal>().Wait();
-            //Seeds();
+            _database.CreateTableAsync<Budget>().Wait();
+            _database.CreateTableAsync<ShoppingList>().Wait();
             Sprawdzam();
         }
 
 
-        public void Seeds()
+        public void SeedsAsync()
         {
-            var ListItem = new List<Category>();
-            ListItem.Add(new Category { CategoryTitle = "Zakupy" });
-            ListItem.Add(new Category { CategoryTitle = "Elektronika" });
-            ListItem.Add(new Category { CategoryTitle = "Czynsz" });
-            ListItem.Add(new Category { CategoryTitle = "Transport" });
-            _database.InsertAllAsync(ListItem);
-        }
-        public Task<List<Category>> CatList()
-        {
-
-            //string queryString = $"SELECT CategoryTitle FROM Category";
-            //return await _database.QueryAsync<Category>(queryString).ConfigureAwait(false);
-            return _database.Table<Category>().ToListAsync();
-
+            var rows =  _database.Table<Category>().CountAsync().Result;
+            if (rows == 0)
+            {
+                var ListItem = new List<Category>();
+                ListItem.Add(new Category { CategoryTitle = "Zakupy" });
+                ListItem.Add(new Category { CategoryTitle = "Elektronika" });
+                ListItem.Add(new Category { CategoryTitle = "Czynsz" });
+                ListItem.Add(new Category { CategoryTitle = "Transport" });
+                 _database.InsertAllAsync(ListItem);
+            }
         }
 
         public async void Sprawdzam()

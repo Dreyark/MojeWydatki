@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MojeWydatki.Views.ExpenseListView">
+             x:Class="MojeWydatki.Views.ShoppingListListView">
     <NavigationPage.TitleView>
         <Label 
-            Text="Wydatki" 
+            Text="Lista Zakupów" 
             TextColor="White"
             FontSize="Title"/>
     </NavigationPage.TitleView>
@@ -40,20 +40,8 @@
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Grid.ColumnSpan="2"
-                                Text="{Binding Description}"
+                                Text="{Binding ListName}"
                                 FontSize="Large"
-                                TextColor="Black"/>
-                            <Label 
-                                Grid.Row="1"
-                                Grid.Column="3"
-                                Text="{Binding Value}"
-                                FontSize="Small"
-                                TextColor="Black"/>
-                            <Label 
-                                Grid.Row="1"
-                                Grid.Column="4"
-                                Text="{Binding Date}"
-                                FontSize="Small"
                                 TextColor="Black"/>
                         </Grid>
                     </ViewCell>
@@ -62,15 +50,15 @@
         </ListView>
 
         <Button
-            x:Name="AddExpense"
+            x:Name="AddShoppingList"
             Grid.Row="1"
             Margin="10"
             BorderRadius="20"
             Grid.Column="1"
             BackgroundColor="DarkOrange"
             Text="Add"
-            Clicked="AddExpense_Clicked"
+            Clicked="AddShoppingList_Clicked"
             TextColor="White"/>
     </Grid>
 
-</ContentPage>
+    </ContentPage>

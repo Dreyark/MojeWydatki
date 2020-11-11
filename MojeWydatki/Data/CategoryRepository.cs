@@ -23,14 +23,20 @@ namespace MojeWydatki.Data
 
         public Task SaveCategoryAsync(Category category)
         {
-            if (category.ID != 0)
+            var z = _database.Table<Category>().Where(i => i.CategoryTitle == category.CategoryTitle).CountAsync();
+            if (z.Result == 0)
             {
-                return _database.UpdateAsync(category);
+                if (category.ID != 0)
+                {
+                    return _database.UpdateAsync(category);
+                }
+                else
+                {
+                    return _database.InsertAsync(category);
+                }
             }
-            else
-            {
-                return _database.InsertAsync(category);
-            }
+
+            return Task.FromResult(0);
         }
     }
 }

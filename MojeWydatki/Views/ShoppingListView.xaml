@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MojeWydatki.ViewModels"
+             x:Class="MojeWydatki.Views.ShoppingListView">
+    <ContentPage.BindingContext>
+        <local:ShoppingListViewModel/>
+    </ContentPage.BindingContext>
+
+    <NavigationPage.TitleView>
+        <Label 
+            Text="Lista Zakupów" 
+            TextColor="White"
+            FontSize="Title"/>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Editor 
+                x:Name="ProductEditor"
+                Grid.Row="0"
+                Grid.RowSpan="1"
+                Grid.ColumnSpan="3"
+                Placeholder="Produkt"
+                Text=""
+                />
+            <Button 
+                x:Name="AddProductButton"
+                Grid.Row="0" 
+                Clicked="SaveProductList_Clicked"
+                Grid.RowSpan="1"
+                Grid.Column="3"
+                TextColor="Black"
+                Text="Dodaj"
+                CornerRadius="10" 
+                Margin="5"/>
+
+            <ListView 
+            x:Name="listView"
+            x:FieldModifier="public"
+            HasUnevenRows="true"
+                Grid.Row="1"
+                Grid.RowSpan="6"
+            Grid.ColumnSpan="4">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Label 
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding}"
+                                FontSize="Large"
+                                TextColor="Black"/>
+                                <Button 
+                                    Grid.Row="1" Grid.Column="4"
+                                    Text="X"
+                                    Clicked="DeleteProduct_Clicked"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

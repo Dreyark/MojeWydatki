@@ -4,7 +4,9 @@
              x:Class="MojeWydatki.Views.HomeView">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label 
+                x:Name="BalanceLabel"
+                Text=""
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Button 
@@ -14,6 +16,14 @@
                 CornerRadius="20"
                 Margin="150,20,150,140"
                 Clicked="AddCategory_Clicked"/>
+
+            <Button 
+                TextColor="Black"   
+                BackgroundColor="LightGreen"
+                Text="Ustal budżet"
+                CornerRadius="20"
+                Margin="100,20,150,140"
+                Clicked="SetBudget_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

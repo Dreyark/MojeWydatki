@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Services;
+﻿using MojeWydatki.ViewModels;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,12 +16,20 @@ namespace MojeWydatki.Views
     {
         public HomeView()
         {
+            var vm = new HomeViewModel();
+            vm.setBalance();
             InitializeComponent();
+            BalanceLabel.Text = Convert.ToString(vm.MonthBalance);
         }
 
         async private void AddCategory_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PushAsync(new AddCategoryPopup());
+        }
+
+        async private void SetBudget_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new SetBudgetPopup());
         }
     }
 }

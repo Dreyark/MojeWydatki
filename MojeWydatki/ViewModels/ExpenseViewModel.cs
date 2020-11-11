@@ -20,13 +20,15 @@ namespace MojeWydatki.ViewModels
         public IList<Category> CategoryList { get; set; }
 
         ExpenseRepository expenseRep;
+        CategoryRepository catRep;
 
         public ExpenseViewModel()
         {
             expenseRep = new ExpenseRepository();
+            catRep = new CategoryRepository();
             CategoryList = new ObservableCollection<Category>();
 
-            var iList = App.Database.CatList();
+            var iList = catRep.GetCategoriesAsync();
             foreach (Category i in iList.Result)
             {
                 CategoryList.Add(i);
@@ -49,9 +51,10 @@ namespace MojeWydatki.ViewModels
         public ExpenseViewModel(Expense expense)
         {
             expenseRep = new ExpenseRepository();
+            catRep = new CategoryRepository();
             CategoryList = new ObservableCollection<Category>();
 
-            var iList = App.Database.CatList();
+            var iList = catRep.GetCategoriesAsync();
             foreach (Category i in iList.Result)
             {
                 CategoryList.Add(i);

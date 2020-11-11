@@ -13,8 +13,6 @@ namespace MojeWydatki.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public String minimumDate = "11-03-2020";
-
         GoalRepository goalRep;
 
         public Double progress;
