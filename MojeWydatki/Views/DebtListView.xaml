@@ -1,15 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MojeWydatki.Views.GoalListView">
+             x:Class="MojeWydatki.Views.DebtListView">
     <NavigationPage.TitleView>
         <Label 
-            Text="Cele" 
+            Text="Długi" 
             TextColor="White"
             FontSize="Title"/>
     </NavigationPage.TitleView>
     <TabbedPage.Children>
-        <ContentPage Title="W trakcie">
+        <ContentPage Title="W Trakcie">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*"/>
@@ -25,42 +25,50 @@
             x:FieldModifier="public"
             ItemTapped="OnItemTapped"
             HasUnevenRows="true"
-            Grid.ColumnSpan="6">
+            Grid.ColumnSpan="8"
+            Grid.RowSpan="6">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <Grid Padding="10">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="3"/>
+                                        <RowDefinition Height="6"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="5"/>
+                                        <ColumnDefinition Width="8"/>
                                     </Grid.ColumnDefinitions>
                                     <Label 
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Grid.ColumnSpan="2"
-                                Text="{Binding Title}"
+                                Text="{Binding debt.Person}"
+                                FontSize="Large"
+                                TextColor="Black"/>
+                                    <Label 
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding debt.Description}"
                                 FontSize="Large"
                                 TextColor="Black"/>
                                     <ProgressBar 
                                 x:Name="progress"
-                                ProgressColor="Green" 
-                                Grid.Row="2"
+                                ProgressColor="{Binding Color}" 
+                                Grid.Row="3"
                                 Grid.ColumnSpan="4"
-                                Progress="{Binding Progress}"/>
+                                Progress="{Binding debt.Progress}"/>
                                     <Label 
                                 x:Name="curVal"
-                                Grid.Row="2"
+                                Grid.Row="3"
                                 Grid.Column="2"
-                                Text="{Binding CurrentValue}"
+                                Text="{Binding debt.CurrentValue}"
                                 FontSize="Small"
                                 TextColor="Black"/>
                                     <Label 
-                                x:Name="goalVal"
-                                Grid.Row="2"
+                                x:Name="DebtVal"
+                                Grid.Row="3"
                                 Grid.Column="4"
-                                Text="{Binding GoalValue}"
+                                Text="{Binding debt.DebtValue}"
                                 FontSize="Small"
                                 TextColor="Black"/>
                                 </Grid>
@@ -68,20 +76,38 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <StackLayout Grid.Row="2" Grid.Column ="4" Grid.ColumnSpan="3" Orientation="Horizontal" IsVisible="False" x:Name="FloatMenuItem1">
+                    <Label Text="Pożyczyłem od kogoś" VerticalOptions="Center"/>
+                    <Frame BackgroundColor="Red" CornerRadius="30">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="FloatMenuItem1Tap" Tapped="FloatMenuItem1Tap_OnTapped" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </StackLayout>
 
+                <StackLayout Grid.Row="3" Grid.Column ="4" Grid.ColumnSpan="3"  Orientation="Horizontal" IsVisible="False" x:Name="FloatMenuItem2">
+                    <Label Text="Pożyczono ode mnie" VerticalOptions="Center"/>
+                    <Frame BackgroundColor="Green" CornerRadius="30">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="FloatMenuItem2Tap" Tapped="FloatMenuItem2Tap_OnTapped" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </StackLayout>
                 <Button
-            x:Name="AddGoal"
-            Grid.Row="1"
-            Margin="10"
+            x:Name="Plus"
+            Grid.Row="3"
+            Grid.Column="6"
+            Grid.RowSpan="3"
+            Margin="0,45,5,30"
             BorderRadius="20"
-            Grid.Column="1"
-            BackgroundColor="DarkOrange"
-            Text="Add"
-            Clicked="AddGoal_Clicked"
+            BackgroundColor="Blue"
+            Text="+"
+            FontSize="Medium"
+            Clicked="TapGestureRecognizer_OnTapped"
             TextColor="White"/>
             </Grid>
         </ContentPage>
-        <ContentPage Title="Ukończone">
+        <ContentPage Title="Zakończone">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*"/>
@@ -97,42 +123,50 @@
             x:FieldModifier="public"
             ItemTapped="OnItemTapped"
             HasUnevenRows="true"
-            Grid.ColumnSpan="6">
+            Grid.RowSpan="6"
+            Grid.ColumnSpan="8">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <Grid Padding="10">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="3"/>
+                                        <RowDefinition Height="6"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="5"/>
+                                        <ColumnDefinition Width="8"/>
                                     </Grid.ColumnDefinitions>
                                     <Label 
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Grid.ColumnSpan="2"
-                                Text="{Binding Title}"
+                                Text="{Binding debt.Person}"
+                                FontSize="Large"
+                                TextColor="Black"/>
+                                    <Label 
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding debt.Description}"
                                 FontSize="Large"
                                 TextColor="Black"/>
                                     <ProgressBar 
                                 x:Name="progress"
-                                ProgressColor="Green" 
-                                Grid.Row="2"
+                                ProgressColor="{Binding Color}" 
+                                Grid.Row="3"
                                 Grid.ColumnSpan="4"
-                                Progress="{Binding Progress}"/>
+                                Progress="{Binding debt.Progress}"/>
                                     <Label 
                                 x:Name="curVal"
-                                Grid.Row="2"
+                                Grid.Row="3"
                                 Grid.Column="2"
-                                Text="{Binding CurrentValue}"
+                                Text="{Binding debt.CurrentValue}"
                                 FontSize="Small"
                                 TextColor="Black"/>
                                     <Label 
-                                x:Name="goalVal"
-                                Grid.Row="2"
+                                x:Name="DebtVal"
+                                Grid.Row="3"
                                 Grid.Column="4"
-                                Text="{Binding GoalValue}"
+                                Text="{Binding debt.DebtValue}"
                                 FontSize="Small"
                                 TextColor="Black"/>
                                 </Grid>
@@ -140,6 +174,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+
             </Grid>
         </ContentPage>
     </TabbedPage.Children>

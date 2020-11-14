@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MojeWydatki.ViewModels"
+             x:Class="MojeWydatki.Views.AddDebtView">
+
+    <NavigationPage.TitleView>
+        <Label 
+            Text="Dodaj dług" 
+            TextColor="White"
+            FontSize="Title"/>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Editor 
+                Grid.Row="0"
+                Text="{Binding ThePerson}"/>
+
+            <Editor 
+                x:Name="CurrentValue"
+                Grid.Row="1"
+                Placeholder="Opis"
+                Text="{Binding TheDescription}"/>
+
+            <Editor 
+                x:Name="GoalValue"
+                Grid.Row="2"
+                Placeholder="Wartosc Końcowa"
+                Keyboard="Numeric"
+                Text="{Binding TheDebtValue}"/>
+
+            <DatePicker Grid.Row="3" x:Name="BorrowDate" Format="dd MMM yyyy" Date="{Binding TheBorrowDate}"/>
+
+            <DatePicker Grid.Row="4" x:Name="DateOfDelivery" Format="dd MMM yyyy" Date="{Binding TheDateOfDelivery}"/>
+
+            <Button 
+                Grid.Row="5" 
+                Grid.Column="0"
+                TextColor="Black"
+                BackgroundColor="LightGreen"
+                Text="Zapisz Cel"
+                CornerRadius="10" 
+                Margin="10"
+                Command="{Binding SaveDebtCommand}"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

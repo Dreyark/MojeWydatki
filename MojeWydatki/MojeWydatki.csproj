@@ -24,6 +24,9 @@
     <Compile Update="Views\AddCategoryPopup.xaml.cs">
       <DependentUpon>AddCategoryPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\UpdateDebtPopup.xaml.cs">
+      <DependentUpon>UpdateDebtPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ExpenseListView.xaml.cs">
       <DependentUpon>ExpenseListView.xaml</DependentUpon>
     </Compile>
@@ -36,6 +39,9 @@
     <EmbeddedResource Update="Views\AddCategoryPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\AddDebtView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\AddShoppingListPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -43,6 +49,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\AppMasterDetailPageMaster.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DebtListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\UpdateDebtPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ExpenseView.xaml">

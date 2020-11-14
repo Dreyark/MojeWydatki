@@ -21,6 +21,7 @@ namespace MojeWydatki.Data
             _database.CreateTableAsync<Goal>().Wait();
             _database.CreateTableAsync<Budget>().Wait();
             _database.CreateTableAsync<ShoppingList>().Wait();
+            _database.CreateTableAsync<Debt>().Wait();
             Sprawdzam();
         }
 
