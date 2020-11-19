@@ -30,20 +30,23 @@
                                     TextColor="Black"/>
                             <Label 
                             Grid.Row="2"
-                            Grid.Column="2"
-                            Grid.ColumnSpan="3"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="5"
                             XAlign="Center"
                                     Text="{Binding TheValue, StringFormat='Zapłacono: {0:F2} zł'}"
                                     FontSize="Large"
                                     TextColor="Black"/>
                             <Label 
                             Grid.Row="3"
-                            Grid.Column="2"
-                                    Text="{Binding TheCategory}"
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="4"
+                            XAlign="Center"
+                                    Text="{Binding TheCategory, StringFormat='Kategoria: {0:F2}'}"
                                     FontSize="Large"
                                     TextColor="Black"/>
                             <Button Grid.Row="5" Grid.ColumnSpan="6" Text="Edytuj"  Clicked="AddExpense_Clicked" CornerRadius="10" Margin="5,5,5,5"/>
-                            <Button Grid.Row="6" Grid.ColumnSpan="6" Text="Usuń"  Clicked="RemoveExpense_Clicked" CornerRadius="10" Margin="5,5,5,5"/>
+                            <Button Grid.Row="6" Grid.ColumnSpan="6" Text="Usuń" Command="{Binding RemoveExpense}" Clicked="RemoveExpense_Clicked" CornerRadius="10" Margin="5,5,5,5"/>
             </Grid>
             </StackLayout>
                 </Frame>

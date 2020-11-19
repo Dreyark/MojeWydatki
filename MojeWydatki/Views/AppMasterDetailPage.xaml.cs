@@ -27,10 +27,10 @@ namespace MojeWydatki.Views
             var page = (Page)Activator.CreateInstance(item.TargetType);
             page.Title = item.Title;
 
-            Detail = new NavigationPage(page);
+            Detail = new NavigationPage(page) { BarBackgroundColor = Color.FromHex("#0E547C"), BarTextColor = Color.White, BackgroundColor  = Color.FromHex("#0E547C") };
             IsPresented = false;
 
-            MasterPage.ListView.SelectedItem = null;
+            MasterPage.ListView.SelectedItem = 0;
         }
     }
 }

@@ -12,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.9" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.9" />
     <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.6" />
@@ -23,6 +24,9 @@
   <ItemGroup>
     <Compile Update="Views\AddCategoryPopup.xaml.cs">
       <DependentUpon>AddCategoryPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AddExpenseView.xaml.cs">
+      <DependentUpon>AddExpenseView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\UpdateDebtPopup.xaml.cs">
       <DependentUpon>UpdateDebtPopup.xaml</DependentUpon>
@@ -54,10 +58,13 @@
     <EmbeddedResource Update="Views\DebtListView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\MonthStatsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\UpdateDebtPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ExpenseView.xaml">
+    <EmbeddedResource Update="Views\AddExpenseView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ExpenseListView.xaml">

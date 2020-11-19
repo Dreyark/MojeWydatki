@@ -4,6 +4,7 @@ using MojeWydatki.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -13,6 +14,9 @@ namespace MojeWydatki.ViewModels
 {
     public class HomeViewModel
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        public ObservableCollection<Expense> ExpenseList { get; set; }
+
         ExpenseRepository expenseRep;
 
         BudgetRepository budgetRep;
@@ -20,6 +24,8 @@ namespace MojeWydatki.ViewModels
         public Double ExpensesValue;
 
         public Double MonthBalance;
+
+        public bool isBalanceSet = false;
         public HomeViewModel()
         {
             App.Database.SeedsAsync();
@@ -39,10 +45,10 @@ namespace MojeWydatki.ViewModels
         {
             var firstDayOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddSeconds(-1);
-            var test = budgetRep.GetBudgetAsync(firstDayOfMonth);
+            MonthBalance = 0;
             ExpensesValue = 0;
             var iexpenseList = expenseRep.GetExpensesAsync().Result;
-            var ibudgetList = budgetRep.GetExpensesAsync().Result;
+            var ibudgetList = budgetRep.GetBudgetsAsync().Result;
             foreach (Expense i in iexpenseList)
             {
                 if(i.Date >= firstDayOfMonth && i.Date <= lastDayOfMonth)
@@ -53,10 +59,37 @@ namespace MojeWydatki.ViewModels
                 if (i.Date == firstDayOfMonth)
                 {
                     MonthBalance = i.MonthlyBudget - ExpensesValue;
+                    isBalanceSet = true;
                     break;
                 }
             }
         }
+
+        public async Task MakeExpenseList()
+        {
+            ExpenseList = new ObservableCollection<Expense>();
+            var iList = await expenseRep.GetExpensesAsync();
+
+            foreach (Expense i in iList)
+            {
+                ExpenseList.Add(i);
+            }
+        }
+
+        int _height;
+
+        public int Height
+
+        {
+            get { return _height; }
+            set
+            {
+                _height = value;
+                var args = new PropertyChangedEventArgs(nameof(Height));
+                PropertyChanged?.Invoke(this, args);
+            }
+        }
+
 
         public String budgetValue;
 

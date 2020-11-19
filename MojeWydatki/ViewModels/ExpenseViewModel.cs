@@ -40,7 +40,7 @@ namespace MojeWydatki.ViewModels
                 expense.Description = TheDescription;
                 expense.Value = Convert.ToDouble(TheValue);
                 expense.Date = DateTime.Now;
-                expense.CategoryId = CategoryId;
+                expense.CategoryId = CategoryId+1;
                 await expenseRep.SaveExpenseAsync(expense);
                 TheDescription = string.Empty;
                 TheValue = "0";
@@ -48,8 +48,9 @@ namespace MojeWydatki.ViewModels
             });
         }
 
-        public ExpenseViewModel(Expense expense)
+        public ExpenseViewModel(ExtendedExpense extexpense)
         {
+            var expense = extexpense.Expense;
             expenseRep = new ExpenseRepository();
             catRep = new CategoryRepository();
             CategoryList = new ObservableCollection<Category>();
@@ -59,18 +60,18 @@ namespace MojeWydatki.ViewModels
             {
                 CategoryList.Add(i);
             }
-
+            TheCategory = extexpense.Category;
             TheDescription = expense.Description;
             TheValue = Convert.ToString(expense.Value);
-            CategoryId = expense.CategoryId;
-            System.Diagnostics.Debug.WriteLine("DATE : " + expense.Date.ToString("dd-MM-yyyy"));
+            CategoryId = expense.CategoryId-1;
+            //System.Diagnostics.Debug.WriteLine("DATE : " + expense.Date.ToString("dd-MM-yyyy"));
 
             SaveExpenseCommand = new Command(async () =>
             {
                 expense.Description = TheDescription;
                 expense.Value = Convert.ToDouble(TheValue);
                 expense.Date = DateTime.UtcNow;
-                expense.CategoryId = CategoryId;
+                expense.CategoryId = CategoryId+1;
                 await expenseRep.SaveExpenseAsync(expense);
                 TheDescription = string.Empty;
                 TheValue = string.Empty;
@@ -91,6 +92,18 @@ namespace MojeWydatki.ViewModels
             {
                 description = value;
                 var args = new PropertyChangedEventArgs(nameof(TheDescription));
+                PropertyChanged?.Invoke(this, args);
+            }
+        }
+
+        string category;
+        public string TheCategory
+        {
+            get => category;
+            set
+            {
+                category = value;
+                var args = new PropertyChangedEventArgs(nameof(TheCategory));
                 PropertyChanged?.Invoke(this, args);
             }
         }

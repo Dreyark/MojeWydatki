@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MojeWydatki.Models;
 using System.Linq;
 using System.Collections.ObjectModel;
+using MojeWydatki.ViewModels;
 
 namespace MojeWydatki.Data
 {
@@ -22,13 +23,12 @@ namespace MojeWydatki.Data
             _database.CreateTableAsync<Budget>().Wait();
             _database.CreateTableAsync<ShoppingList>().Wait();
             _database.CreateTableAsync<Debt>().Wait();
-            Sprawdzam();
         }
 
 
         public void SeedsAsync()
         {
-            var rows =  _database.Table<Category>().CountAsync().Result;
+            var rows = _database.Table<Category>().CountAsync().Result;
             if (rows == 0)
             {
                 var ListItem = new List<Category>();
@@ -36,7 +36,7 @@ namespace MojeWydatki.Data
                 ListItem.Add(new Category { CategoryTitle = "Elektronika" });
                 ListItem.Add(new Category { CategoryTitle = "Czynsz" });
                 ListItem.Add(new Category { CategoryTitle = "Transport" });
-                 _database.InsertAllAsync(ListItem);
+                _database.InsertAllAsync(ListItem);
             }
         }
 
@@ -47,6 +47,22 @@ namespace MojeWydatki.Data
             {
                 Console.WriteLine(s.CategoryId);
             }
+        }
+
+        public List<StatsByCategory> StatsByCategoryList(DateTime From, DateTime To)
+        {
+            var q = _database.QueryAsync<StatsByCategory>(
+                @"Select Sum(Value) as Value, Category.CategoryTitle as Category from Category INNER JOIN Expense ON Category.ID = Expense.CategoryId WHERE
+                Expense.Date > '"+From.Ticks+"' AND Expense.Date <'"+To.Ticks+"' Group By CategoryId");
+            return q.Result;
+        }
+
+        public List<ExpenseWithCategory> List(DateTime From, DateTime To)
+        {
+            var q = _database.QueryAsync<ExpenseWithCategory>(
+                @"Select Expense.Description as Title, Expense.Value as Value, Category.CategoryTitle as Category from Category INNER JOIN Expense ON Category.ID = Expense.CategoryId WHERE
+                Expense.Date > '" + From.Ticks + "' AND Expense.Date <'" + To.Ticks + "' ORDER BY Value DESC LIMIT 4");
+            return q.Result;
         }
     }
 }

@@ -33,7 +33,7 @@ namespace MojeWydatki.Data.Interface
             return _database.Table<Budget>().Where(i => i.Date == date).FirstAsync();
         }
 
-        public Task<List<Budget>> GetExpensesAsync()
+        public Task<List<Budget>> GetBudgetsAsync()
         {
             return _database.Table<Budget>().ToListAsync();
         }

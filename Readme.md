@@ -21,3 +21,22 @@ Do 20.11
 Lista zmian:
 29.10
 - Wstêpna lista wydatków
+
+02.11
+- Kategorie
+- MasterDetailPage
+
+04.11
+- Cele
+- Popoup menu
+
+11.11
+- Lista zakupów
+
+14.11
+- Zak³adka d³ugów
+- Strona g³ówna
+
+19.11
+- Miesiêczne statystyki
+- Ustalanie miesiêcznego bud¿etu

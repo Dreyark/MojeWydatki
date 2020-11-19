@@ -13,12 +13,6 @@ namespace MojeWydatki.Models
         public Double Value { get; set; }
         public DateTime Date { get; set; }
 
-        public Expense(string text, DateTime date)
-        {
-            Description = text;
-            Date = date;
-        }
-
         public Expense()
         {
         }

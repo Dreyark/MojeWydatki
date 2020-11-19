@@ -27,16 +27,16 @@ namespace MojeWydatki.Views
 
             var vm = BindingContext as DebtListViewModel;
             await vm.MakeDebtList();
-            CompletelistView.ItemsSource = vm.DebtList.Where(i => i.debt.Progress >=1);
-            InProgresslistView.ItemsSource = vm.DebtList.Where(i => i.debt.Progress < 1);
+            CompletelistView.ItemsSource = vm.DebtList.Where(i => i.Debt.Progress >=1);
+            InProgresslistView.ItemsSource = vm.DebtList.Where(i => i.Debt.Progress < 1);
         }
 
         async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             ListDebt tappedDebtItem = e.Item as ListDebt;
 
-            var DebtViewModelVM = new DebtViewModel(tappedDebtItem.debt);
-            var DebtPopupMenu = new UpdateDebtPopup(tappedDebtItem.debt);
+            var DebtViewModelVM = new DebtViewModel(tappedDebtItem.Debt);
+            var DebtPopupMenu = new UpdateDebtPopup(tappedDebtItem.Debt);
             DebtPopupMenu.CallbackEvent += (object sender, object e) => CallbackMethod();
             DebtPopupMenu.BindingContext = DebtViewModelVM;
 

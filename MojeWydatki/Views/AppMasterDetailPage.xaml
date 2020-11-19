@@ -7,8 +7,8 @@
     <pages:AppMasterDetailPageMaster x:Name="MasterPage" />
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>
-    <NavigationPage>
-      <x:Arguments>
+        <NavigationPage BarBackgroundColor="#0E547C" BarTextColor="White">
+            <x:Arguments>
         <pages:HomeView />
       </x:Arguments>
     </NavigationPage>

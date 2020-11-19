@@ -59,6 +59,7 @@ namespace MojeWydatki.Views
         public void SaveProductList_Clicked(object sender, EventArgs e)
         {
             tapped.Products += "¡" + ProductEditor.Text;
+            ProductEditor.Text = "";
             var vm = new ShoppingListViewModel(tapped);
             vm.SaveShoppingListCommand.Execute(tapped);
             MakeShoppingList();

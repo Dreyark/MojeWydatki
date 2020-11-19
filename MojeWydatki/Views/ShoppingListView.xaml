@@ -38,9 +38,10 @@
                 Clicked="SaveProductList_Clicked"
                 Grid.RowSpan="1"
                 Grid.Column="3"
-                TextColor="Black"
+                TextColor="White"
+                BackgroundColor="Transparent"
                 Text="Dodaj"
-                CornerRadius="10" 
+                CornerRadius="15" 
                 Margin="5"/>
 
             <ListView 
@@ -49,27 +50,37 @@
             HasUnevenRows="true"
                 Grid.Row="1"
                 Grid.RowSpan="6"
+                SelectionMode="None"
             Grid.ColumnSpan="4">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Padding="10">
+                            <Grid Padding="5">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="2"/>
+                                    <RowDefinition Height="10"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="30"/>
                                 </Grid.ColumnDefinitions>
                                 <Label 
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Grid.ColumnSpan="2"
+                                Grid.ColumnSpan="3"
                                 Text="{Binding}"
-                                FontSize="Large"
+                                FontSize="Medium"
                                 TextColor="Black"/>
                                 <Button 
+                                    CornerRadius="150"
+                                    WidthRequest="20"
+                                    HeightRequest="40"
                                     Grid.Row="1" Grid.Column="4"
-                                    Text="X"
+                                    BackgroundColor="Transparent"
+                                    TextColor="White"
+                                    TextTransform="None"
+                                    Text="Usuń"
+                                    FontSize="Medium"
                                     Clicked="DeleteProduct_Clicked"/>
                             </Grid>
                         </ViewCell>

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:local="clr-namespace:MojeWydatki.ViewModels"
+             x:Class="MojeWydatki.Views.MonthStatsView">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <forms:ChartView x:Name="Chart1" HeightRequest="320"/>
+
+            <ListView 
+            x:Name="listView"
+            x:FieldModifier="public"
+            SeparatorColor="Transparent"
+            HasUnevenRows="true"
+            SelectionMode="None"
+            Grid.ColumnSpan="6">
+                <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3"/>
+                            </Grid.ColumnDefinitions>
+                            <Label 
+                                Grid.Row="1"
+                                Grid.RowSpan="2"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding Title}"
+                                FontSize="Medium"
+                                VerticalTextAlignment="Center"
+                                TextColor="Gray"/>
+                            <Label 
+                                Grid.Row="1"
+                                Grid.Column="3"
+                                Grid.RowSpan="2"
+                                VerticalTextAlignment="Center"
+                                Text="{Binding Value, StringFormat='{0:F2} zł'}"
+                                FontSize="Small"
+                                TextColor="Gray"/>
+                            <Label 
+                                Grid.Row="1"
+                                Grid.RowSpan="2"
+                                Grid.Column="4" 
+                                VerticalTextAlignment="Center"
+                                Text="{Binding Category}"
+                                FontSize="Small"
+                                TextColor="Gray"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

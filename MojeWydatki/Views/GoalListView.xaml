@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MojeWydatki.Views.GoalListView">
+             x:Class="MojeWydatki.Views.GoalListView" BarBackgroundColor="#0D537C" BackgroundColor="White">
     <NavigationPage.TitleView>
         <Label 
             Text="Cele" 
@@ -25,6 +25,7 @@
             x:FieldModifier="public"
             ItemTapped="OnItemTapped"
             HasUnevenRows="true"
+            SeparatorColor="Gray"
             Grid.ColumnSpan="6">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -40,9 +41,10 @@
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Grid.ColumnSpan="2"
+                                        
                                 Text="{Binding Title}"
                                 FontSize="Large"
-                                TextColor="Black"/>
+                                TextColor="Gray"/>
                                     <ProgressBar 
                                 x:Name="progress"
                                 ProgressColor="Green" 
@@ -53,16 +55,16 @@
                                 x:Name="curVal"
                                 Grid.Row="2"
                                 Grid.Column="2"
-                                Text="{Binding CurrentValue}"
+                                Text="{Binding CurrentValue, StringFormat='{0:F2} zł'}"
                                 FontSize="Small"
-                                TextColor="Black"/>
+                                TextColor="Gray"/>
                                     <Label 
                                 x:Name="goalVal"
                                 Grid.Row="2"
                                 Grid.Column="4"
-                                Text="{Binding GoalValue}"
+                                Text="{Binding GoalValue, StringFormat='{0:F2} zł'}"
                                 FontSize="Small"
-                                TextColor="Black"/>
+                                TextColor="Gray"/>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
@@ -114,7 +116,7 @@
                                 Grid.ColumnSpan="2"
                                 Text="{Binding Title}"
                                 FontSize="Large"
-                                TextColor="Black"/>
+                                TextColor="Gray"/>
                                     <ProgressBar 
                                 x:Name="progress"
                                 ProgressColor="Green" 
@@ -127,14 +129,14 @@
                                 Grid.Column="2"
                                 Text="{Binding CurrentValue}"
                                 FontSize="Small"
-                                TextColor="Black"/>
+                                TextColor="Gray"/>
                                     <Label 
                                 x:Name="goalVal"
                                 Grid.Row="2"
                                 Grid.Column="4"
-                                Text="{Binding GoalValue}"
+                                Text="{Binding CurrentValue}"
                                 FontSize="Small"
-                                TextColor="Black"/>
+                                TextColor="Gray"/>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

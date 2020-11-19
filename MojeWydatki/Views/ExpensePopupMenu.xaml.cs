@@ -22,10 +22,11 @@ namespace MojeWydatki.Views
     {
         public event EventHandler<object> CallbackEvent;
         protected override void OnDisappearing() => CallbackEvent?.Invoke(this, EventArgs.Empty);
-        Expense tappedExpenseItem;
-        public ExpensePopupMenu(Expense tapped)
+        //public ExtendedExpense tappedExpenseItem { get; set; }
+        public ExpensePopupMenu()
         {
-            tappedExpenseItem = tapped;
+            //tappedExpenseItem = tapped;
+            //tappedExpenseItem = DependencyService.Get<ExtendedExpense>();
             InitializeComponent();
         }
 
@@ -36,11 +37,11 @@ namespace MojeWydatki.Views
 
         async private void AddExpense_Clicked(object sender, EventArgs e)
         {
-            var expenseViewMV = new ExpenseViewModel(tappedExpenseItem);
-            var expenseView = new ExpenseView();
-            expenseView.BindingContext = expenseViewMV;
+            var expenseViewMV = new ExpenseViewModel();
+            var addExpenseView = new AddExpenseView();
+            addExpenseView.BindingContext = expenseViewMV;
             await CloseAllPopup();
-            await ((AppMasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(expenseView);
+            await ((AppMasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(addExpenseView);
         }
 
         private async Task CloseAllPopup()
@@ -50,8 +51,8 @@ namespace MojeWydatki.Views
 
         private void RemoveExpense_Clicked(object sender, EventArgs e)
         {
-            var vm = new ExpenseViewModel(tappedExpenseItem);
-            vm.RemoveExpense.Execute(tappedExpenseItem);
+            //var vm = new ExpenseViewModel(tappedExpenseItem.Expense);
+            //vm.RemoveExpense.Execute(tappedExpenseItem.Expense);
             Background_tapped(sender, e);
         }
     }

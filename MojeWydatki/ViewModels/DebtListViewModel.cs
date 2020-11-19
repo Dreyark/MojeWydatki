@@ -32,7 +32,7 @@ namespace MojeWydatki.ViewModels
             {
                 DebtList.Add(new ListDebt()
                 {
-                    debt = i,
+                    Debt = i,
                     Color = i.AmILender ? "Green" : "Red"
                 }) ;
             }
@@ -41,7 +41,7 @@ namespace MojeWydatki.ViewModels
 
     public class ListDebt
     {
-        public Debt debt { get; set; }
+        public Debt Debt { get; set; }
         public String Color { get; set; }
         public ListDebt()
         {

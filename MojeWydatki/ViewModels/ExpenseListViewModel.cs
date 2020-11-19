@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace MojeWydatki.ViewModels
 {
@@ -15,23 +16,36 @@ namespace MojeWydatki.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ObservableCollection<Expense> ExpenseList { get; set; }
+        public ObservableCollection<ExtendedExpense> ExtendedExpenseList { get; set; }
+        public List<String> CategoryList { get; set; }
 
-        ExpenseRepository expenseRep;
+        private ExpenseRepository expenseRep;
+        private CategoryRepository categoryRep;
 
-        public ExpenseListViewModel(ExpenseListView activity)
+        public ExpenseListViewModel()
         {
             expenseRep = new ExpenseRepository();
+            categoryRep = new CategoryRepository();
         }
 
         public async Task MakeExpenseList()
         {
-            ExpenseList = new ObservableCollection<Expense>();
+            ExtendedExpenseList = new ObservableCollection<ExtendedExpense>();
+            CategoryList = new List<String>();
             var iList = await expenseRep.GetExpensesAsync();
+            var CatList = await categoryRep.GetCategoriesAsync();
+            foreach (Category i in CatList)
+            {
+                CategoryList.Add(i.CategoryTitle);
+            }
 
             foreach (Expense i in iList)
             {
-                ExpenseList.Add(i);
+                ExtendedExpenseList.Add(new ExtendedExpense
+                {
+                    Expense = i,
+                    Category = CategoryList.ElementAt(i.CategoryId-1)
+                }) ;
             }
         }
     }

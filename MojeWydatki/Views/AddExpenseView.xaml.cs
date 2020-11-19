@@ -13,9 +13,9 @@ using Xamarin.Forms.Xaml;
 namespace MojeWydatki.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ExpenseView : ContentPage
+    public partial class AddExpenseView : ContentPage
     {
-        public ExpenseView()
+        public AddExpenseView()
         {
             InitializeComponent();
         }
@@ -30,6 +30,11 @@ namespace MojeWydatki.Views
                 Value.Text = e.OldTextValue;
 
             }
+        }
+
+        public void OnSaveButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
         }
     }
 }

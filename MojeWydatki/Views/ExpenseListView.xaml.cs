@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static MojeWydatki.ViewModels.ExpenseListViewModel;
 
 namespace MojeWydatki.Views
 {
@@ -19,13 +20,13 @@ namespace MojeWydatki.Views
     {
         public ExpenseListView()
         {
-            BindingContext = new ExpenseListViewModel(this);
+            BindingContext = new ExpenseListViewModel();
             InitializeComponent();
         }
 
         async private void AddExpense_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ExpenseView());
+            await Navigation.PushAsync(new AddExpenseView());
         }
 
         protected override async void OnAppearing()
@@ -34,15 +35,15 @@ namespace MojeWydatki.Views
 
             var vm = BindingContext as ExpenseListViewModel;
             await vm.MakeExpenseList();
-            listView.ItemsSource = vm.ExpenseList;
+            listView.ItemsSource = vm.ExtendedExpenseList;
         }
 
         async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Expense tappedExpenseItem = e.Item as Expense;
-
+            ExtendedExpense tappedExpenseItem = e.Item as ExtendedExpense;
+            Expense expense = tappedExpenseItem.Expense;
             var expensePopupMenuVM = new ExpenseViewModel(tappedExpenseItem);
-            var expensePopupMenu = new ExpensePopupMenu(tappedExpenseItem);
+            var expensePopupMenu = new ExpensePopupMenu();
 
             expensePopupMenu.CallbackEvent += (object sender, object e) => CallbackMethod();
             expensePopupMenu.BindingContext = expensePopupMenuVM;

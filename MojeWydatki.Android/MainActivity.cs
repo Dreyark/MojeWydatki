@@ -20,7 +20,7 @@ namespace MojeWydatki.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
-
+            Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#0E547C"));
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Popup.Init(this, savedInstanceState);

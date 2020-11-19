@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MojeWydatki.Views.DebtListView">
+             x:Class="MojeWydatki.Views.DebtListView" BarBackgroundColor="#0D537C">
     <NavigationPage.TitleView>
         <Label 
             Text="Długi" 
@@ -25,14 +25,13 @@
             x:FieldModifier="public"
             ItemTapped="OnItemTapped"
             HasUnevenRows="true"
-            Grid.ColumnSpan="8"
-            Grid.RowSpan="6">
+                    Grid.ColumnSpan="9">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <Grid Padding="10">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="6"/>
+                                        <RowDefinition Height="2"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="8"/>
@@ -40,35 +39,39 @@
                                     <Label 
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Grid.ColumnSpan="2"
-                                Text="{Binding debt.Person}"
+                                Grid.ColumnSpan="6"
+                                Text="{Binding Debt.Person}"
                                 FontSize="Large"
                                 TextColor="Black"/>
                                     <Label 
                                 Grid.Row="2"
                                 Grid.Column="1"
-                                Grid.ColumnSpan="2"
-                                Text="{Binding debt.Description}"
-                                FontSize="Large"
+                                Grid.ColumnSpan="6"
+                                Text="{Binding Debt.Description}"
+                                FontSize="Medium"
                                 TextColor="Black"/>
                                     <ProgressBar 
                                 x:Name="progress"
                                 ProgressColor="{Binding Color}" 
                                 Grid.Row="3"
-                                Grid.ColumnSpan="4"
-                                Progress="{Binding debt.Progress}"/>
+                                Grid.RowSpan="2"
+                                Grid.ColumnSpan="6"
+                                Progress="{Binding Debt.Progress}"/>
                                     <Label 
                                 x:Name="curVal"
                                 Grid.Row="3"
-                                Grid.Column="2"
-                                Text="{Binding debt.CurrentValue}"
+                                Grid.Column="3"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding Debt.CurrentValue, StringFormat='{0:F2} zł'}"
                                 FontSize="Small"
                                 TextColor="Black"/>
                                     <Label 
                                 x:Name="DebtVal"
                                 Grid.Row="3"
-                                Grid.Column="4"
-                                Text="{Binding debt.DebtValue}"
+                                Grid.Column="5"
+                                HorizontalOptions="End"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding Debt.DebtValue, StringFormat='{0:F2} zł'}"
                                 FontSize="Small"
                                 TextColor="Black"/>
                                 </Grid>
@@ -76,8 +79,8 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <StackLayout Grid.Row="2" Grid.Column ="4" Grid.ColumnSpan="3" Orientation="Horizontal" IsVisible="False" x:Name="FloatMenuItem1">
-                    <Label Text="Pożyczyłem od kogoś" VerticalOptions="Center"/>
+                <StackLayout Grid.Row="1" Grid.Column ="4" Grid.RowSpan="2" Grid.ColumnSpan="4" Orientation="Horizontal" IsVisible="False" x:Name="FloatMenuItem1" Margin="0,20,15,20">
+                    <Label Text="Pożyczyłem od kogoś" VerticalOptions="Center" FontAttributes="Bold"/>
                     <Frame BackgroundColor="Red" CornerRadius="30">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer x:Name="FloatMenuItem1Tap" Tapped="FloatMenuItem1Tap_OnTapped" />
@@ -85,8 +88,8 @@
                     </Frame>
                 </StackLayout>
 
-                <StackLayout Grid.Row="3" Grid.Column ="4" Grid.ColumnSpan="3"  Orientation="Horizontal" IsVisible="False" x:Name="FloatMenuItem2">
-                    <Label Text="Pożyczono ode mnie" VerticalOptions="Center"/>
+                <StackLayout Grid.Row="2" Grid.RowSpan="2" Grid.Column ="4" Grid.ColumnSpan="4"  Orientation="Horizontal" IsVisible="False" x:Name="FloatMenuItem2" Margin="0,20,15,20">
+                    <Label Text="Pożyczono ode mnie" VerticalOptions="Center" FontAttributes="Bold"/>
                     <Frame BackgroundColor="Green" CornerRadius="30">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer x:Name="FloatMenuItem2Tap" Tapped="FloatMenuItem2Tap_OnTapped" />
@@ -96,15 +99,18 @@
                 <Button
             x:Name="Plus"
             Grid.Row="3"
-            Grid.Column="6"
             Grid.RowSpan="3"
-            Margin="0,45,5,30"
-            BorderRadius="20"
-            BackgroundColor="Blue"
+            Grid.Column="6"
+            Grid.ColumnSpan="3"
+            Margin="30,30,60,40"
+            BorderRadius ="20"
+            WidthRequest = "40"
+            HeightRequest = "40"
+            BackgroundColor="White"
             Text="+"
-            FontSize="Medium"
+            FontSize="15"
             Clicked="TapGestureRecognizer_OnTapped"
-            TextColor="White"/>
+            TextColor="Gray"/>
             </Grid>
         </ContentPage>
         <ContentPage Title="Zakończone">
