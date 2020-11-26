@@ -5,12 +5,14 @@
     <ContentPage.Content>
         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
 
-            <Grid.GestureRecognizers>
-                <TapGestureRecognizer Tapped="Background_tapped"/>
-            </Grid.GestureRecognizers>
-            <Grid x:Name="body" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
-                <Frame CornerRadius="25" Padding="20" Margin="20,200,20,20" BackgroundColor="AliceBlue"
-                       WidthRequest="1000" HeightRequest="500">
+            <Image>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Background_tapped" NumberOfTapsRequired="1"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Grid x:Name="body" HorizontalOptions="Center" VerticalOptions="Center">
+                <Frame CornerRadius="25" BackgroundColor="AliceBlue"
+                       WidthRequest="350" HeightRequest="400">
                     <StackLayout Padding="10">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -43,6 +45,15 @@
                             Grid.ColumnSpan="4"
                             XAlign="Center"
                                     Text="{Binding TheCategory, StringFormat='Kategoria: {0:F2}'}"
+                                    FontSize="Large"
+                                    TextColor="Black"/>
+                            <Label 
+                            Grid.Row="4"
+                            Grid.RowSpan="2"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="4"
+                            XAlign="Center"
+                                    Text="{Binding TheDate}"
                                     FontSize="Large"
                                     TextColor="Black"/>
                             <Button Grid.Row="5" Grid.ColumnSpan="6" Text="Edytuj"  Clicked="AddExpense_Clicked" CornerRadius="10" Margin="5,5,5,5"/>

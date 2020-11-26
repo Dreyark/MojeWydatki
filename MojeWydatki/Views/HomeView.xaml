@@ -1,58 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MojeWydatki.Views.HomeView" BackgroundColor="#0E547C">
+             x:Class="MojeWydatki.Views.HomeView" BackgroundColor="White">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="280"/>
-                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="90"/>
                     </Grid.RowDefinitions>
                     <Button
                         Grid.Row="0"
                     x:Name="BalanceLabel"
-                    Margin="30,10,30,10"
-                TextColor="Black"   
-                BackgroundColor="SkyBlue"
+                    Margin="30,10,30,0"
+                TextColor="White"   
+                BackgroundColor="#0E547C"
                 Text=""
                 TextTransform="None"
-                FontSize="Large"
+                FontSize="22"
                 BorderRadius ="120"
                 WidthRequest = "240"
                 HeightRequest = "240"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" 
-                Clicked="SetBudget_Clicked">
-                </Button>
+                Clicked="SetBudget_Clicked"/>
 
-                <Button 
+
+                    <Button 
                     Grid.Row="1"
                 x:Name="budgetButton"
-                TextColor="Black"   
-                BackgroundColor="SkyBlue"
+                TextColor="White"   
+                BackgroundColor="#0E547C"
                 Text="Dodaj kategorię"
                 FontSize="11"   
                 FontAttributes="Bold"
                 Margin="50,0,50,0"
-                BorderRadius ="40"
-                WidthRequest = "80"
-                HeightRequest = "80"
+                BorderRadius ="45"
+                WidthRequest = "90"
+                HeightRequest = "90"
                 HorizontalOptions="Start"
                 Clicked="AddCategory_Clicked"/>
                 <Button 
-                    Grid.Row="1"
+                Grid.Row="1"
                 x:Name="AddExpenseButton"
-                TextColor="Black"   
-                BackgroundColor="SkyBlue"
+                TextColor="White"   
+                BackgroundColor="#0E547C"
                 Text="Dodaj Wydatek"
-                FontSize="11"   
+                FontSize="10"   
                 FontAttributes="Bold"
                 Margin="50,0,50,0"
-                BorderRadius ="40"
-                WidthRequest = "80"
-                HeightRequest = "80"
+                BorderRadius ="45"
+                WidthRequest = "90"
+                HeightRequest = "90"
                 HorizontalOptions="End"
                 Clicked="AddExpense_Clicked"/>
                 </Grid>

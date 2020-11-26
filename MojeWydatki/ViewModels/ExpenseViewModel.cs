@@ -15,8 +15,6 @@ namespace MojeWydatki.ViewModels
     public class ExpenseViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public Command GetDataCategory { get; }
         public IList<Category> CategoryList { get; set; }
 
         ExpenseRepository expenseRep;
@@ -37,9 +35,10 @@ namespace MojeWydatki.ViewModels
             SaveExpenseCommand = new Command(async () =>
             {
                 var expense = new Expense();
+                TheDate += TheTime;
                 expense.Description = TheDescription;
                 expense.Value = Convert.ToDouble(TheValue);
-                expense.Date = DateTime.Now;
+                expense.Date = TheDate;
                 expense.CategoryId = CategoryId+1;
                 await expenseRep.SaveExpenseAsync(expense);
                 TheDescription = string.Empty;
@@ -60,6 +59,9 @@ namespace MojeWydatki.ViewModels
             {
                 CategoryList.Add(i);
             }
+            var Id = expense.ID;
+            TheDate = expense.Date;
+            TheTime = expense.Date.TimeOfDay;
             TheCategory = extexpense.Category;
             TheDescription = expense.Description;
             TheValue = Convert.ToString(expense.Value);
@@ -68,9 +70,13 @@ namespace MojeWydatki.ViewModels
 
             SaveExpenseCommand = new Command(async () =>
             {
+
+                TheDate = TheDate.Date;
+                TheDate += TheTime;
+                expense.ID = Id;
                 expense.Description = TheDescription;
                 expense.Value = Convert.ToDouble(TheValue);
-                expense.Date = DateTime.UtcNow;
+                expense.Date = TheDate;
                 expense.CategoryId = CategoryId+1;
                 await expenseRep.SaveExpenseAsync(expense);
                 TheDescription = string.Empty;
@@ -148,8 +154,38 @@ namespace MojeWydatki.ViewModels
             }
         }
 
+        DateTime date;
+        public DateTime TheDate
+        {
+            get
+            {
+                return date;
+            }
+            set
+            {
+                this.date = value;
+                //System.Diagnostics.Debug.WriteLine(this.categoryId);
+                var args = new PropertyChangedEventArgs(nameof(TheDate));
+                PropertyChanged?.Invoke(this, args);
+            }
+        }
+
+        TimeSpan time;
+        public TimeSpan TheTime
+        {
+            get
+            {
+                return time;
+            }
+            set
+            {
+                this.time = value;
+                //System.Diagnostics.Debug.WriteLine(this.categoryId);
+                var args = new PropertyChangedEventArgs(nameof(TheTime));
+                PropertyChanged?.Invoke(this, args);
+            }
+        }
         public Command RemoveExpense { get; }
         public Command SaveExpenseCommand { get; }
-        public Expense BindingContext { get; }
     }
 }

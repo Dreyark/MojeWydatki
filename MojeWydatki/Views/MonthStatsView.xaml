@@ -8,6 +8,8 @@
             <forms:ChartView x:Name="Chart1" HeightRequest="320"/>
 
             <ListView 
+            HorizontalScrollBarVisibility="Never"
+            VerticalScrollBarVisibility="Never"
             x:Name="listView"
             x:FieldModifier="public"
             SeparatorColor="Transparent"
@@ -34,7 +36,7 @@
                                 Text="{Binding Title}"
                                 FontSize="Medium"
                                 VerticalTextAlignment="Center"
-                                TextColor="Gray"/>
+                                TextColor="Black"/>
                             <Label 
                                 Grid.Row="1"
                                 Grid.Column="3"
@@ -42,7 +44,7 @@
                                 VerticalTextAlignment="Center"
                                 Text="{Binding Value, StringFormat='{0:F2} zł'}"
                                 FontSize="Small"
-                                TextColor="Gray"/>
+                                TextColor="Black"/>
                             <Label 
                                 Grid.Row="1"
                                 Grid.RowSpan="2"
@@ -50,7 +52,7 @@
                                 VerticalTextAlignment="Center"
                                 Text="{Binding Category}"
                                 FontSize="Small"
-                                TextColor="Gray"/>
+                                TextColor="Black"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

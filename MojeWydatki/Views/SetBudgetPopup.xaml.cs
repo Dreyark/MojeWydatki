@@ -51,7 +51,7 @@ namespace MojeWydatki.Views
             if (newText == "")
             {
 
-                SetBudget.IsVisible = false;
+                SetBudgetButton.IsVisible = false;
 
             }
             else

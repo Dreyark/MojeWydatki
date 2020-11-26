@@ -40,7 +40,7 @@ namespace MojeWydatki.Views
         {
             ExtendedExpense tappedExtendedExpenseItem = e.Item as ExtendedExpense;
             var expensePopupMenuVM = new ExpenseViewModel(tappedExtendedExpenseItem);
-            var expensePopupMenu = new ExpensePopupMenu();
+            var expensePopupMenu = new ExpensePopupMenu(expensePopupMenuVM);
 
             expensePopupMenu.CallbackEvent += (object sender, object e) => CallbackMethod();
             expensePopupMenu.BindingContext = expensePopupMenuVM;

@@ -56,6 +56,11 @@ namespace MojeWydatki.Views
             vm.SaveShoppingListCommand.Execute(tapped);
         }
 
+        public void DeleteClicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
+
         public void SaveProductList_Clicked(object sender, EventArgs e)
         {
             tapped.Products += "¡" + ProductEditor.Text;

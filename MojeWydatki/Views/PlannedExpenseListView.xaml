@@ -1,10 +1,11 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MojeWydatki.Views.ShoppingListListView" BackgroundColor="White">
+             x:Class="MojeWydatki.Views.PlannedExpenseListView" BackgroundColor="White">
+
     <NavigationPage.TitleView>
         <Label 
-            Text="Lista Zakupów" 
+            Text="Zaplanowane Wydatki" 
             TextColor="White"
             FontSize="Title"/>
     </NavigationPage.TitleView>
@@ -20,12 +21,13 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <ListView 
+        <ListView
             x:Name="listView"
             x:FieldModifier="public"
             ItemTapped="OnItemTapped"
-            SelectionMode="None"
             HasUnevenRows="true"
+            SeparatorColor="Black"
+            SelectionMode="None"
             Grid.ColumnSpan="6"
             Grid.RowSpan="6">
             <ListView.ItemTemplate>
@@ -45,10 +47,10 @@
                             </Grid.ColumnDefinitions>
                             <Label 
                                 Grid.Row="1"
-                                Grid.Column="1"
+                                Grid.Column="0"
                                 Grid.ColumnSpan="2"
-                                Text="{Binding ListName}"
-                                FontSize="Large"
+                                Text="{Binding Description}"
+                                FontSize="Large"    
                                 TextColor="Black"/>
                         </Grid>
                     </ViewCell>
@@ -57,7 +59,7 @@
         </ListView>
 
         <Button
-            x:Name="AddShoppingList"
+            x:Name="AddPlannedExpense"
             Grid.Row="4"
             Margin="2"
             BorderRadius="20"
@@ -65,8 +67,8 @@
             BackgroundColor="#0D537C"
             Text="+"
             VerticalOptions="End"
-            Clicked="AddShoppingList_Clicked"
+            Clicked="AddPlannedExpense_Clicked"
             TextColor="White"/>
     </Grid>
 
-    </ContentPage>
+</ContentPage>

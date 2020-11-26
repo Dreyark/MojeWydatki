@@ -22,11 +22,10 @@ namespace MojeWydatki.Views
     {
         public event EventHandler<object> CallbackEvent;
         protected override void OnDisappearing() => CallbackEvent?.Invoke(this, EventArgs.Empty);
-        //public ExtendedExpense tappedExpenseItem { get; set; }
-        public ExpensePopupMenu()
+        public ExpenseViewModel ExpenseVM { get; set; }
+        public ExpensePopupMenu(ExpenseViewModel vm)
         {
-            //tappedExpenseItem = tapped;
-            //tappedExpenseItem = DependencyService.Get<ExtendedExpense>();
+            ExpenseVM = vm;
             InitializeComponent();
         }
 
@@ -37,9 +36,8 @@ namespace MojeWydatki.Views
 
         async private void AddExpense_Clicked(object sender, EventArgs e)
         {
-            var expenseViewMV = new ExpenseViewModel();
             var addExpenseView = new AddExpenseView();
-            addExpenseView.BindingContext = expenseViewMV;
+            addExpenseView.BindingContext = ExpenseVM;
             await CloseAllPopup();
             await ((AppMasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(addExpenseView);
         }

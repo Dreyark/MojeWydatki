@@ -1,6 +1,4 @@
-﻿using MojeWydatki.Models;
-using MojeWydatki.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,13 +11,13 @@ using Xamarin.Forms.Xaml;
 namespace MojeWydatki.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddExpenseView : ContentPage
+    public partial class AddPlannedExpenseView : ContentPage
     {
-        public AddExpenseView()
+        public AddPlannedExpenseView()
         {
             InitializeComponent();
-            ExpenseDate.Date = DateTime.Now;
-            ExpenseTime.Time = DateTime.Now.TimeOfDay;
+            StartDate.MinimumDate = DateTime.Now;
+            EndDate.MinimumDate = DateTime.Now.AddDays(1);
         }
         void Value_Changed(object sender, TextChangedEventArgs e)
         {
@@ -37,6 +35,19 @@ namespace MojeWydatki.Views
         public void OnSaveButtonClicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();
+        }
+
+        private void StartDate_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+          EndDate.MinimumDate = StartDate.Date.AddDays(1);
+        }
+
+        private void EndDate_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if(EndDate.Date<StartDate.Date)
+            {
+                EndDate.Date = StartDate.Date.AddDays(1);
+            }
         }
     }
 }

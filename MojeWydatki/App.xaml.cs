@@ -11,6 +11,7 @@ namespace MojeWydatki
     {
 
         static Database database;
+        PlannedExpenseJob plannedExpenseJob;
 
         public static Database Database
         {
@@ -34,6 +35,7 @@ namespace MojeWydatki
 
         public App()
         {
+            plannedExpenseJob = new PlannedExpenseJob();
             InitializeComponent();
             MainPage = new AppMasterDetailPage();
         }

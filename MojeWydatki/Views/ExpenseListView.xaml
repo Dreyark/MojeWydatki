@@ -25,9 +25,10 @@
             x:FieldModifier="public"
             ItemTapped="OnItemTapped"
             HasUnevenRows="true"
-            SeparatorColor="Gray"
+            SeparatorColor="Black"
             SelectionMode="None"
-            Grid.ColumnSpan="6">
+            Grid.ColumnSpan="6"
+            Grid.RowSpan="6">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -49,21 +50,23 @@
                                 Grid.ColumnSpan="2"
                                 Text="{Binding Category}"
                                 FontSize="Large"    
-                                TextColor="Gray"/>
+                                TextColor="Black"/>
                             <Label 
                                 Grid.Row="1"
                                 Grid.Column="2"
                                 Grid.ColumnSpan="3"
                                 Text="{Binding Expense.Value, StringFormat='{0:F2} zł'}"
+                                HorizontalTextAlignment="End"
+                                Padding="0,0,15,0"
                                 FontSize="Large"
-                                TextColor="Gray"/>
+                                TextColor="Black"/>
                             <Label 
                                 Grid.Row="1"
                                 Grid.Column="5"
                                 Grid.ColumnSpan="2"
                                 Text="{Binding Expense.Date, StringFormat='{}{0:dd/MM/yyyy}'}"
                                 FontSize="Small"
-                                TextColor="Gray"/>
+                                TextColor="Black"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
@@ -72,12 +75,13 @@
 
         <Button
             x:Name="AddExpense"
-            Grid.Row="1"
-            Margin="10"
+            Grid.Row="4"
+            Margin="2"
             BorderRadius="20"
-            Grid.Column="1"
-            BackgroundColor="DarkOrange"
-            Text="Add"
+            Grid.Column="4"
+            BackgroundColor="#0D537C"
+            Text="+"
+            VerticalOptions="End"
             Clicked="AddExpense_Clicked"
             TextColor="White"/>
     </Grid>

@@ -17,47 +17,113 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="200"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5"/>
             </Grid.ColumnDefinitions>
 
-            <Editor 
+            <Label
                 Grid.Row="0"
+                Grid.Column="1"
+                Grid.ColumnSpan="5"
+                Text="Tytuł"
+                TextColor="White"
+                FontSize="20"
+                VerticalTextAlignment="Center"
+                HorizontalOptions="Center"
+            />
+            <Editor 
+                Grid.Row="1"
+                Grid.Column="1"
+                Grid.ColumnSpan="5"
+                Margin="25,0,30,0"
+                TextColor="Black"
                 Placeholder="Tytul"
                 Text="{Binding TheTitle}"/>
+            <Label
+                Grid.Row="2"
+                Grid.Column="1"
+                Grid.ColumnSpan="5"
+                Text="Kwota początkowa"
+                TextColor="White"
+                FontSize="20"
+                VerticalTextAlignment="Center"
+                HorizontalOptions="Center"
+            />
 
             <Editor 
                 x:Name="CurrentValue"
-                Grid.Row="1"
-                Placeholder="Wartosc poczatkowa"
+                Grid.Row="3"
+                Grid.Column="1"
+                Grid.ColumnSpan="5"
+                Margin="25,0,30,0"
+                TextColor="Black"
+                Placeholder="0.00"
                 Keyboard="Numeric"
                 TextChanged="CurrentValue_Changed"
                 Text="{Binding TheCurrentValue}"/>
+            <Label
+                Grid.Row="4"
+                Grid.Column="1"
+                Grid.ColumnSpan="5"
+                Text="Kwota Celu"
+                TextColor="White"
+                FontSize="20"
+                VerticalTextAlignment="Center"
+                HorizontalOptions="Center"
+            />
 
             <Editor 
                 x:Name="GoalValue"
-                Grid.Row="2"
-                Placeholder="Wartosc Końcowa"
+                Grid.Row="5"
+                Grid.Column="1"
+                Grid.ColumnSpan="5"
+                Margin="25,0,30,0"
+                TextColor="Black"
+                Placeholder="0.00"
                 Keyboard="Numeric"
                 TextChanged="GoalValue_Changed"
                 Text="{Binding TheGoalValue}"/>
 
-            <DatePicker Grid.Row="3" x:Name="EndDate" Format="dd MMM yyyy" Date="{Binding TheEndDate}"/>
+            <Label
+                Grid.Row="6"
+                Grid.Column="1"
+                Grid.ColumnSpan="5"
+                Text="Data zakończenia celu"
+                TextColor="White"
+                FontSize="20"
+                VerticalTextAlignment="Center"
+                HorizontalOptions="Center"
+            />
+            <DatePicker 
+                Grid.Column="1"
+                Grid.ColumnSpan="5"
+                Margin="25,0,30,0"
+                TextColor="Black"
+                Grid.Row="7" 
+                x:Name="EndDate" 
+                Format="dd MMM yyyy" 
+                Date="{Binding TheEndDate}"/>
 
             <Button 
-                Grid.Row="4" 
+                Grid.Row="12" 
+                Grid.RowSpan="2" 
                 Grid.Column="0"
-                TextColor="Black"
-                BackgroundColor="LightGreen"
+                Grid.ColumnSpan="6"
+                TextColor="White"
+                BackgroundColor="Gray"
                 Text="Zapisz Cel"
-                CornerRadius="10" 
-                Margin="10"
-                Command="{Binding SaveGoalCommand}"/>
+                Command="{Binding SaveGoalCommand}" Clicked="OnSaveButtonClicked"/>
 
         </Grid>
     </ContentPage.Content>

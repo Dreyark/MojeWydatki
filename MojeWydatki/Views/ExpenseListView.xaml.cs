@@ -35,18 +35,18 @@ namespace MojeWydatki.Views
 
             var vm = BindingContext as ExpenseListViewModel;
             await vm.MakeExpenseList();
-            listView.ItemsSource = vm.ExtendedExpenseList;
+            listView.ItemsSource = vm.ExtendedExpenseList.OrderByDescending(i=>i.Expense.Date);
         }
 
         async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             ExtendedExpense tappedExpenseItem = e.Item as ExtendedExpense;
             Expense expense = tappedExpenseItem.Expense;
-            var expensePopupMenuVM = new ExpenseViewModel(tappedExpenseItem);
-            var expensePopupMenu = new ExpensePopupMenu();
+            var ExpenseVM = new ExpenseViewModel(tappedExpenseItem);
+            var expensePopupMenu = new ExpensePopupMenu(ExpenseVM);
 
             expensePopupMenu.CallbackEvent += (object sender, object e) => CallbackMethod();
-            expensePopupMenu.BindingContext = expensePopupMenuVM;
+            expensePopupMenu.BindingContext = ExpenseVM;
 
             await PopupNavigation.Instance.PushAsync(expensePopupMenu);
 

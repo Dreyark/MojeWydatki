@@ -12,7 +12,7 @@
         <ContentPage Title="W trakcie">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="8*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
@@ -26,45 +26,49 @@
             ItemTapped="OnItemTapped"
             HasUnevenRows="true"
             SeparatorColor="Gray"
-            Grid.ColumnSpan="6">
+            Grid.ColumnSpan="6"
+                    Grid.RowSpan="6">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <Grid Padding="10">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="3"/>
+                                        <RowDefinition Height="2"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="5"/>
+                                        <ColumnDefinition Width="8"/>
                                     </Grid.ColumnDefinitions>
                                     <Label 
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Grid.ColumnSpan="2"
-                                        
+                                Grid.ColumnSpan="6"
                                 Text="{Binding Title}"
                                 FontSize="Large"
-                                TextColor="Gray"/>
+                                TextColor="Black"/>
                                     <ProgressBar 
                                 x:Name="progress"
                                 ProgressColor="Green" 
                                 Grid.Row="2"
-                                Grid.ColumnSpan="4"
+                                Grid.RowSpan="2"
+                                Grid.ColumnSpan="6"
                                 Progress="{Binding Progress}"/>
                                     <Label 
                                 x:Name="curVal"
                                 Grid.Row="2"
-                                Grid.Column="2"
+                                Grid.Column="3"
+                                Grid.ColumnSpan="2"
                                 Text="{Binding CurrentValue, StringFormat='{0:F2} zł'}"
                                 FontSize="Small"
-                                TextColor="Gray"/>
+                                TextColor="Black"/>
                                     <Label 
                                 x:Name="goalVal"
                                 Grid.Row="2"
-                                Grid.Column="4"
+                                Grid.Column="5"
+                                HorizontalOptions="End"
+                                Grid.ColumnSpan="2"
                                 Text="{Binding GoalValue, StringFormat='{0:F2} zł'}"
                                 FontSize="Small"
-                                TextColor="Gray"/>
+                                TextColor="Black"/>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
@@ -73,12 +77,12 @@
 
                 <Button
             x:Name="AddGoal"
-            Grid.Row="1"
-            Margin="10"
+            Grid.Row="4"
+            Margin="2"
             BorderRadius="20"
-            Grid.Column="1"
-            BackgroundColor="DarkOrange"
-            Text="Add"
+            Grid.Column="4"
+            BackgroundColor="#0D537C"
+            Text="+"
             Clicked="AddGoal_Clicked"
             TextColor="White"/>
             </Grid>
@@ -113,30 +117,34 @@
                                     <Label 
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Grid.ColumnSpan="2"
+                                Grid.ColumnSpan="6"
                                 Text="{Binding Title}"
                                 FontSize="Large"
-                                TextColor="Gray"/>
+                                TextColor="Black"/>
                                     <ProgressBar 
                                 x:Name="progress"
                                 ProgressColor="Green" 
                                 Grid.Row="2"
-                                Grid.ColumnSpan="4"
+                                Grid.RowSpan="2"
+                                Grid.ColumnSpan="6"
                                 Progress="{Binding Progress}"/>
                                     <Label 
                                 x:Name="curVal"
                                 Grid.Row="2"
-                                Grid.Column="2"
-                                Text="{Binding CurrentValue}"
+                                Grid.Column="3"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding CurrentValue, StringFormat='{0:F2} zł'}"
                                 FontSize="Small"
-                                TextColor="Gray"/>
+                                TextColor="Black"/>
                                     <Label 
                                 x:Name="goalVal"
                                 Grid.Row="2"
-                                Grid.Column="4"
-                                Text="{Binding CurrentValue}"
+                                Grid.Column="5"
+                                HorizontalOptions="End"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding GoalValue, StringFormat='{0:F2} zł'}"
                                 FontSize="Small"
-                                TextColor="Gray"/>
+                                TextColor="Black"/>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

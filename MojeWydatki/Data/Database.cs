@@ -23,6 +23,7 @@ namespace MojeWydatki.Data
             _database.CreateTableAsync<Budget>().Wait();
             _database.CreateTableAsync<ShoppingList>().Wait();
             _database.CreateTableAsync<Debt>().Wait();
+            _database.CreateTableAsync<PlannedExpense>().Wait();
         }
 
 
@@ -61,7 +62,7 @@ namespace MojeWydatki.Data
         {
             var q = _database.QueryAsync<ExpenseWithCategory>(
                 @"Select Expense.Description as Title, Expense.Value as Value, Category.CategoryTitle as Category from Category INNER JOIN Expense ON Category.ID = Expense.CategoryId WHERE
-                Expense.Date > '" + From.Ticks + "' AND Expense.Date <'" + To.Ticks + "' ORDER BY Value DESC LIMIT 4");
+                Expense.Date > '" + From.Ticks + "' AND Expense.Date <'" + To.Ticks + "' ORDER BY Value DESC LIMIT 10");
             return q.Result;
         }
     }

@@ -9,7 +9,7 @@
   <MasterDetailPage.Detail>
         <NavigationPage BarBackgroundColor="#0E547C" BarTextColor="White">
             <x:Arguments>
-        <pages:HomeView />
+        <pages:HomeView Title="Strona główna"/>
       </x:Arguments>
     </NavigationPage>
   </MasterDetailPage.Detail>

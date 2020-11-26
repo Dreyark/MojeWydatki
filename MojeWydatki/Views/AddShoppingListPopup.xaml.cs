@@ -36,5 +36,20 @@ namespace MojeWydatki.Views
         {
             await PopupNavigation.Instance.PopAllAsync();
         }
+
+        void Entry_ShoppingChanged(object sender, TextChangedEventArgs e)
+        {
+            var newText = e.NewTextValue;
+            if (newText == "")
+            {
+
+                AddShoppingListButton.IsVisible = false;
+
+            }
+            else
+            {
+                AddShoppingListButton.IsVisible = true;
+            }
+        }
     }
 }

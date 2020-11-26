@@ -44,5 +44,10 @@ namespace MojeWydatki.Views
 
             }
         }
+
+        public void OnSaveButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
     }
 }
