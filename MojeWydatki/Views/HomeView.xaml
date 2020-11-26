@@ -47,7 +47,7 @@
                 TextColor="White"   
                 BackgroundColor="#0E547C"
                 Text="Dodaj Wydatek"
-                FontSize="10"   
+                FontSize="11"   
                 FontAttributes="Bold"
                 Margin="50,0,50,0"
                 BorderRadius ="45"

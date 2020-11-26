@@ -26,7 +26,7 @@ namespace MojeWydatki.Views
             else
             { LendFrom.Text = "Porzyczyłem od"; 
             }
-            BorrowDate.MinimumDate = DateTime.Now;
+            BorrowDate.Date = DateTime.Now;
             DateOfDelivery.MinimumDate = DateTime.Now.AddDays(1);
         }
 

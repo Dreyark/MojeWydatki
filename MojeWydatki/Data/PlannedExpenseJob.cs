@@ -34,7 +34,7 @@ namespace MojeWydatki.Data
                         Value = i.Value
                     };
                     expenseRepository.SaveExpenseAsync(exp);
-                    i.NextExpenseDate.AddDays(1);
+                    i.NextExpenseDate = i.NextExpenseDate.AddDays(1);
                     planExpRepository.SavePlannedExpAsync(i);
                 }
                 else if (i.Repeatability == 2 && i.NextExpenseDate <= DateTime.Now && i.NextExpenseDate <= i.EndDate)
@@ -47,7 +47,7 @@ namespace MojeWydatki.Data
                         Value = i.Value
                     };
                     expenseRepository.SaveExpenseAsync(exp);
-                    i.NextExpenseDate.AddDays(7);
+                    i.NextExpenseDate = i.NextExpenseDate.AddDays(7);
                     planExpRepository.SavePlannedExpAsync(i);
                 }
                 else if (i.Repeatability == 3 && i.NextExpenseDate <= DateTime.Now && i.NextExpenseDate <= i.EndDate)
@@ -60,7 +60,7 @@ namespace MojeWydatki.Data
                         Value = i.Value
                     };
                     expenseRepository.SaveExpenseAsync(exp);
-                    i.NextExpenseDate.AddMonths(1);
+                    i.NextExpenseDate = i.NextExpenseDate.AddMonths(1);
                     planExpRepository.SavePlannedExpAsync(i);
                 }
             }

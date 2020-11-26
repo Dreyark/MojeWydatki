@@ -17,7 +17,7 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="50"/>
@@ -37,7 +37,7 @@
                 Grid.Row="0"
                 Grid.Column="1"
                 Grid.ColumnSpan="5"
-                Text="Tytuł wydatku"
+                Text="Tytuł"
                 TextColor="White"
                 FontSize="Large"
                 VerticalTextAlignment="Center"
@@ -56,7 +56,7 @@
                 Grid.Row="2"
                 Grid.Column="1"
                 Grid.ColumnSpan="5"
-                Text="Kwota wydatku"
+                Text="Kwota"
                 TextColor="White"
                 FontSize="Large"
                 VerticalTextAlignment="Center"
@@ -79,7 +79,7 @@
                 Grid.Row="4"
                 Grid.Column="1"
                 Grid.ColumnSpan="5"
-                Text="Godzina wydatku"
+                Text="Godzina"
                 TextColor="White"
                 FontSize="Large"
                 VerticalTextAlignment="Center"
@@ -97,7 +97,7 @@
                 Grid.Row="6"
                 Grid.Column="1"
                 Grid.ColumnSpan="5"
-                Text="Data wydatku"
+                Text="Data"
                 TextColor="White"
                 FontSize="Large"
                 VerticalTextAlignment="Center"
@@ -117,7 +117,7 @@
                 Grid.Row="8"
                 Grid.Column="1"
                 Grid.ColumnSpan="5"
-                Text="Kategoria Wydatku"
+                Text="Kategoria"
                 TextColor="White"
                 FontSize="Large"
                 VerticalTextAlignment="Center"

@@ -48,7 +48,7 @@
                             <Label 
                                 Grid.Row="1"
                                 Grid.Column="0"
-                                Grid.ColumnSpan="2"
+                                Grid.ColumnSpan="5"
                                 Text="{Binding Description}"
                                 FontSize="Large"    
                                 TextColor="Black"/>
