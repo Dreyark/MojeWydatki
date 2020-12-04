@@ -15,13 +15,14 @@
             </Image>
             <Grid x:Name="body" HorizontalOptions="Center" VerticalOptions="Center">
                 <Frame CornerRadius="25" BackgroundColor="AliceBlue"
-                       WidthRequest="300" HeightRequest="280">
+                       WidthRequest="300" HeightRequest="320">
                     <StackLayout Padding="10">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5"/>
+                                <RowDefinition Height="100"/>
                                 <RowDefinition Height="50"/>
-                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="10"/>
                                 <RowDefinition Height="60"/>
                                 <RowDefinition Height="60"/>
                             </Grid.RowDefinitions>
@@ -29,9 +30,10 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="5"/>
                             </Grid.ColumnDefinitions>
+                            <Label x:Name="DebtDescription" Grid.Row="1" Grid.ColumnSpan="6"/>
                             <Editor 
                                 x:Name="CurrentValueEntry"
-                                Grid.Row="1"
+                                Grid.Row="2"
                                 Grid.RowSpan="1"
                                 Grid.ColumnSpan="6"
                                 Placeholder="Podaj wartość do dodania"
@@ -39,8 +41,8 @@
                                 Text="{Binding TheAddValue}"
                                 TextChanged="Entry_CurrentValueChanged"
                                 />
-                            <Button x:Name="UpdateDebtButton" IsVisible="false" Grid.Row="3" Grid.ColumnSpan="6" Text="Dodaj Wartość" Command="{Binding UpdateDebtCommand}" Clicked="UpdateDebt_Clicked" CornerRadius="10" Margin="5,5,5,5"/>
-                            <Button Grid.Row="4" Grid.ColumnSpan="6" Text="Usuń"  Clicked="RemoveDebt_Clicked" CornerRadius="10" Margin="5,5,5,5"/>
+                            <Button x:Name="UpdateDebtButton" IsVisible="false" Grid.Row="4" Grid.ColumnSpan="6" Text="Dodaj Wartość" Command="{Binding UpdateDebtCommand}" Clicked="UpdateDebt_Clicked" CornerRadius="10" Margin="5,5,5,5"/>
+                            <Button Grid.Row="5" Grid.ColumnSpan="6" Text="Usuń"  Clicked="RemoveDebt_Clicked" CornerRadius="10" Margin="5,5,5,5"/>
                         </Grid>
                     </StackLayout>
                 </Frame>

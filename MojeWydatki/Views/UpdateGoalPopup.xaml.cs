@@ -32,8 +32,27 @@ namespace MojeWydatki.Views
         {
             if (tappedGoalItem.IsFinished)
             {
+                GoalDescription.FontSize = 18;
+                GoalDescription.Text = "Zebrano: " + tappedGoalItem.CurrentValue + " zł, w " + tappedGoalItem.EndDate.Subtract(tappedGoalItem.StartDate).Days + " dni." + System.Environment.NewLine;
+                GoalDescription.Text += "Data Rozpoczęcia: " + tappedGoalItem.StartDate.ToString("dd-MM-yyyy") + System.Environment.NewLine + "Data zakończenia: " + tappedGoalItem.EndDate.ToString("dd-MM-yyyy");
+
                 CurrentValueEntry.IsVisible = false;
                 UpdateGoalButton.IsVisible = false;
+            }
+            else
+            {
+                var remainingDays = tappedGoalItem.EndDate.Subtract(DateTime.Now).Days;
+                double perDay = (tappedGoalItem.GoalValue - tappedGoalItem.CurrentValue) / remainingDays;
+                GoalDescription.Text = "Data zakończenia: " + tappedGoalItem.EndDate.Date.ToString("dd-MM-yyyy");
+                if (remainingDays > 0)
+                {
+                    GoalDescription.Text += System.Environment.NewLine + "Pozostało:" + remainingDays + " dni.";
+                    GoalDescription.Text += System.Environment.NewLine + "Musisz codziennie wpłacać po: " + Math.Round(perDay,2).ToString("N2") + " zł";
+                }
+                else
+                {
+                    GoalDescription.Text += System.Environment.NewLine + "Cel nie zostanie osiągnięty w założonym terminie";
+                }
             }
         }
 

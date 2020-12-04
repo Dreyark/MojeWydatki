@@ -3,10 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              xmlns:local="clr-namespace:MojeWydatki.ViewModels"
              x:Class="MojeWydatki.Views.MonthStatsView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Zmień okres"
+                 Order="Primary"
+                 Clicked="ChangeDateClicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout BackgroundColor="White">
             <forms:ChartView x:Name="Chart1" HeightRequest="320"/>
-
+            <Label x:Name="notification" IsEnabled="False" IsVisible="False" HorizontalOptions="Center" FontSize="25"/>
             <ListView 
             HorizontalScrollBarVisibility="Never"
             VerticalScrollBarVisibility="Never"
@@ -33,7 +38,7 @@
                                 Grid.RowSpan="2"
                                 Grid.Column="1"
                                 Grid.ColumnSpan="2"
-                                Text="{Binding Title}"
+                                Text="{Binding Expense.Description}"
                                 FontSize="Medium"
                                 VerticalTextAlignment="Center"
                                 TextColor="Black"/>
@@ -42,7 +47,7 @@
                                 Grid.Column="3"
                                 Grid.RowSpan="2"
                                 VerticalTextAlignment="Center"
-                                Text="{Binding Value, StringFormat='{0:F2} zł'}"
+                                Text="{Binding Expense.Value, StringFormat='{0:F2} zł'}"
                                 FontSize="Small"
                                 TextColor="Black"/>
                             <Label 

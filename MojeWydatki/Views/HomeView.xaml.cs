@@ -62,7 +62,7 @@ namespace MojeWydatki.Views
             }
             else
             {
-                BalanceLabel.Text = Convert.ToString(vm.MonthBalance) + " zł";
+                BalanceLabel.Text = String.Format("{0:N2} zł", Convert.ToString(vm.MonthBalance));
             }
         }
         async private void AddCategory_Clicked(object sender, EventArgs e)

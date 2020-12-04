@@ -24,44 +24,57 @@ namespace MojeWydatki.Data
 
             foreach (PlannedExpense i in iList)
             {
-                if (i.Repeatability == 1 && i.NextExpenseDate <= DateTime.Now && i.NextExpenseDate <= i.EndDate)
+                if (i.Repeatability == 1)
                 {
-                    var exp = new Expense
+                    while (i.NextExpenseDate <= DateTime.Now && i.NextExpenseDate <= i.EndDate)
                     {
-                        CategoryId = i.CategoryId,
-                        Description = i.Description,
-                        Date = i.NextExpenseDate,
-                        Value = i.Value
-                    };
-                    expenseRepository.SaveExpenseAsync(exp);
-                    i.NextExpenseDate = i.NextExpenseDate.AddDays(1);
-                    planExpRepository.SavePlannedExpAsync(i);
+                        var exp = new Expense
+                        {
+                            CategoryId = i.CategoryId,
+                            Description = i.Description,
+                            Date = i.NextExpenseDate,
+                            Value = i.Value
+                        };
+                        expenseRepository.SaveExpenseAsync(exp);
+                        i.NextExpenseDate = i.NextExpenseDate.AddDays(1);
+                        planExpRepository.SavePlannedExpAsync(i);
+                    }
                 }
-                else if (i.Repeatability == 2 && i.NextExpenseDate <= DateTime.Now && i.NextExpenseDate <= i.EndDate)
+                else if (i.Repeatability == 2)
                 {
-                    var exp = new Expense
+                    while (i.NextExpenseDate <= DateTime.Now && i.NextExpenseDate <= i.EndDate)
                     {
-                        CategoryId = i.CategoryId,
-                        Description = i.Description,
-                        Date = i.NextExpenseDate,
-                        Value = i.Value
-                    };
-                    expenseRepository.SaveExpenseAsync(exp);
-                    i.NextExpenseDate = i.NextExpenseDate.AddDays(7);
-                    planExpRepository.SavePlannedExpAsync(i);
+                        var exp = new Expense
+                        {
+                            CategoryId = i.CategoryId,
+                            Description = i.Description,
+                            Date = i.NextExpenseDate,
+                            Value = i.Value
+                        };
+                        expenseRepository.SaveExpenseAsync(exp);
+                        i.NextExpenseDate = i.NextExpenseDate.AddDays(7);
+                        planExpRepository.SavePlannedExpAsync(i);
+                    }
                 }
-                else if (i.Repeatability == 3 && i.NextExpenseDate <= DateTime.Now && i.NextExpenseDate <= i.EndDate)
+                else if (i.Repeatability == 3)
                 {
-                    var exp = new Expense
+                    while (i.NextExpenseDate <= DateTime.Now && i.NextExpenseDate <= i.EndDate)
                     {
-                        CategoryId = i.CategoryId,
-                        Description = i.Description,
-                        Date = i.NextExpenseDate,
-                        Value = i.Value
-                    };
-                    expenseRepository.SaveExpenseAsync(exp);
-                    i.NextExpenseDate = i.NextExpenseDate.AddMonths(1);
-                    planExpRepository.SavePlannedExpAsync(i);
+                        var exp = new Expense
+                        {
+                            CategoryId = i.CategoryId,
+                            Description = i.Description,
+                            Date = i.NextExpenseDate,
+                            Value = i.Value
+                        };
+                        expenseRepository.SaveExpenseAsync(exp);
+                        i.NextExpenseDate = i.NextExpenseDate.AddMonths(1);
+                        planExpRepository.SavePlannedExpAsync(i);
+                    }
+                }
+                if(i.NextExpenseDate > i.EndDate)
+                {
+                    planExpRepository.DeletePlannedExpAsync(i);
                 }
             }
         }

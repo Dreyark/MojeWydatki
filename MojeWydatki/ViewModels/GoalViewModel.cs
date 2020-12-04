@@ -66,10 +66,14 @@ namespace MojeWydatki.ViewModels
             UpdateGoalCommand = new Command(async () =>
             {
                 goal.Title = TheTitle;
-                goal.CurrentValue = Convert.ToDouble(TheCurrentValue)+ Convert.ToDouble(TheAddValue);
+                goal.CurrentValue = Convert.ToDouble(TheCurrentValue) + Convert.ToDouble(TheAddValue);
                 goal.GoalValue = Convert.ToDouble(TheGoalValue);
                 goal.Progress = goal.CurrentValue / goal.GoalValue;
-                if (goal.Progress >= 1) goal.IsFinished = true;
+                if (goal.Progress >= 1)
+                {
+                    goal.IsFinished = true;
+                    goal.EndDate = DateTime.Now;
+                }
                 await goalRep.SaveGoalAsync(goal);
                 TheTitle = string.Empty;
                 TheCurrentValue = string.Empty;

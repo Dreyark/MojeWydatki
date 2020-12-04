@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:local="clr-namespace:MojeWydatki.ViewModels"
-             x:Class="MojeWydatki.Views.AddGoalView">
+             x:Class="MojeWydatki.Views.AddGoalView" BackgroundColor="#0E547C">
     <ContentPage.BindingContext>
         <local:GoalViewModel/>
     </ContentPage.BindingContext>

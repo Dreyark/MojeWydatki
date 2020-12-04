@@ -31,7 +31,10 @@ namespace MojeWydatki.Views
 
             }
         }
-
+        public void DeleteClicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
         public void OnSaveButtonClicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();

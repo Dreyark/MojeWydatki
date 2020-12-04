@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MojeWydatki.ViewModels"
-             x:Class="MojeWydatki.Views.AddPlannedExpenseView">
+             x:Class="MojeWydatki.Views.AddPlannedExpenseView" BackgroundColor="#0E547C">
     <ContentPage.BindingContext>
         <local:PlannedExpenseViewModel/>
     </ContentPage.BindingContext>
@@ -11,8 +11,13 @@
             Text="Zaplanuj wydatek" 
             TextColor="White"
             FontSize="Title"/>
-
     </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Usuń"
+                 Order="Primary"
+                     Command="{Binding RemovePlannedExpense}"
+                     Clicked="DeleteClicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
             <Grid>

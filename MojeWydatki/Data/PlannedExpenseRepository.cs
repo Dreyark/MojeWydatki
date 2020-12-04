@@ -18,7 +18,7 @@ namespace MojeWydatki.Data
         }
         public Task DeletePlannedExpAsync(PlannedExpense plannedExpense)
         {
-            return _database.Table<PlannedExpense>().ToListAsync();
+            return _database.DeleteAsync(plannedExpense);
         }
 
         public Task<List<PlannedExpense>> GetPlannedExpsAsync()

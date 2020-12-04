@@ -30,8 +30,26 @@ namespace MojeWydatki.Views
         {
             if (tappedDebtItem.Progress >= 1)
             {
+                DebtDescription.FontSize = 18;
+                DebtDescription.Text = "Oddano: " + tappedDebtItem.CurrentValue + " zł, w " + tappedDebtItem.DateOfDelivery.Subtract(tappedDebtItem.BorrowDate).Days + " dni." + System.Environment.NewLine;
+                DebtDescription.Text += "Data Rozpoczęcia: " + tappedDebtItem.BorrowDate.ToString("dd-MM-yyyy") + System.Environment.NewLine + "Data zakończenia: " + tappedDebtItem.DateOfDelivery.ToString("dd-MM-yyyy");
                 CurrentValueEntry.IsVisible = false;
                 UpdateDebtButton.IsVisible = false;
+            }
+            else
+            {
+                var remainingDays = tappedDebtItem.DateOfDelivery.Subtract(DateTime.Now).Days;
+                double perDay = (tappedDebtItem.DebtValue - tappedDebtItem.CurrentValue) / remainingDays;
+                DebtDescription.Text = "Data zakończenia: " + tappedDebtItem.DateOfDelivery.Date.ToString("dd-MM-yyyy");
+                if (remainingDays > 0)
+                {
+                    DebtDescription.Text += System.Environment.NewLine + "Pozostało:" + remainingDays + " dni.";
+                    DebtDescription.Text += System.Environment.NewLine + "Musisz codziennie wpłacać po: " + Math.Round(perDay, 2).ToString("N2") + " zł";
+                }
+                else
+                {
+                    DebtDescription.Text += System.Environment.NewLine + "Pieniądzę nie zostały oddane w terminie";
+                }
             }
         }
 

@@ -50,20 +50,41 @@ namespace MojeWydatki.Data
             }
         }
 
-        public List<StatsByCategory> StatsByCategoryList(DateTime From, DateTime To)
+        public List<MonthStatsViewModel.StatsByCategory> StatsByCategoryList(DateTime From, DateTime To)
         {
-            var q = _database.QueryAsync<StatsByCategory>(
+            var q = _database.QueryAsync<MonthStatsViewModel.StatsByCategory>(
                 @"Select Sum(Value) as Value, Category.CategoryTitle as Category from Category INNER JOIN Expense ON Category.ID = Expense.CategoryId WHERE
-                Expense.Date > '"+From.Ticks+"' AND Expense.Date <'"+To.Ticks+"' Group By CategoryId");
+                Expense.Date > '" + From.Ticks + "' AND Expense.Date <'" + To.Ticks + "' Group By CategoryId");
             return q.Result;
         }
 
-        public List<ExpenseWithCategory> List(DateTime From, DateTime To)
+        //public List<ExpenseWithCategory> List(DateTime From, DateTime To)
+        //{
+        //    var q = _database.QueryAsync<ExpenseWithCategory>(
+        //        @"Select Expense.Description as Title, Expense.Value as Value, Category.CategoryTitle as Category from Category INNER JOIN Expense ON Category.ID = Expense.CategoryId WHERE
+        //        Expense.Date > '" + From.Ticks + "' AND Expense.Date <'" + To.Ticks + "' ORDER BY Value DESC LIMIT 10");
+        //    return q.Result;
+        //}
+
+        public Summary ThreeMonthsStats(DateTime From, DateTime To)
         {
-            var q = _database.QueryAsync<ExpenseWithCategory>(
-                @"Select Expense.Description as Title, Expense.Value as Value, Category.CategoryTitle as Category from Category INNER JOIN Expense ON Category.ID = Expense.CategoryId WHERE
-                Expense.Date > '" + From.Ticks + "' AND Expense.Date <'" + To.Ticks + "' ORDER BY Value DESC LIMIT 10");
-            return q.Result;
+            Summary summary = new Summary();
+            summary.Value = 0;
+            summary.Budget = 0;
+            summary.ValuePerDay = new Double[DateTime.DaysInMonth(From.Year,From.Month)];
+            var expList = _database.Table<Expense>().ToListAsync().Result.Where(i => i.Date > From && i.Date  < To);
+            var budList = _database.Table<Budget>().ToListAsync().Result.Where(i => i.Date == From);
+            foreach (var s in expList)
+            {
+                summary.Value += s.Value;
+                summary.ValuePerDay[s.Date.Day-1] += s.Value; 
+            }
+            foreach (var z in budList)
+            {
+                summary.Budget = z.MonthlyBudget;
+            }
+            summary.Date = From;
+            return summary;
         }
     }
 }

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MojeWydatki.Views.MonthStatsPopup">
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+
+            <Image>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Background_tapped" NumberOfTapsRequired="1"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Grid x:Name="body" HorizontalOptions="Center" VerticalOptions="Center">
+                <Frame CornerRadius="25" BackgroundColor="AliceBlue"
+                       WidthRequest="350" HeightRequest="100">
+                    <StackLayout Padding="10">
+
+                        <Picker 
+                Margin="20,20,20,20"
+                VerticalTextAlignment="Center"
+                x:Name="DateEntry"
+                SelectedIndexChanged="DateEntry_SelectedIndexChanged"
+                TextColor="Black"/>
+
+
+                        <!--<Button 
+                TextColor="White"
+                CornerRadius="10"
+                Margin="15,25,15,15"
+                BackgroundColor="Gray"
+                Clicked="SetDateButton"
+                Text="Wybierz okres"/>-->
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</pages:PopupPage>

@@ -47,6 +47,10 @@ namespace MojeWydatki.ViewModels
             {
                 debt.CurrentValue += Convert.ToDouble(TheAddValue);
                 debt.Progress = debt.CurrentValue / debt.DebtValue;
+                if (debt.Progress > 1)
+                {
+                    debt.DateOfDelivery = DateTime.Now;
+                }
                 await debtRep.SaveDebtAsync(debt);
                 ThePerson = string.Empty;
                 TheDescription = string.Empty;
