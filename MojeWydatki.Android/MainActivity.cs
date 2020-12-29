@@ -39,10 +39,6 @@ namespace MojeWydatki.Droid
             {
                 await PopupNavigation.Instance.PopAsync();
             }
-            else
-            {
-                // Do something if there are not any pages in the `PopupStack`
-            }
         }
     }
 }

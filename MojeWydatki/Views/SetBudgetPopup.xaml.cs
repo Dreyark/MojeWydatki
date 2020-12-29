@@ -41,7 +41,7 @@ namespace MojeWydatki.Views
         {
             var oldText = e.OldTextValue;
             var newText = e.NewTextValue;
-            bool is2 = Regex.IsMatch(SetBudget.Text, @"^[0-9]+(\.[0-9]{0,2})?$|^$");
+            bool is2 = Regex.IsMatch(SetBudget.Text, @"^[0-9]+((\.|\,)[0-9]{0,2})?$|^$");
             if (!is2)
             {
 

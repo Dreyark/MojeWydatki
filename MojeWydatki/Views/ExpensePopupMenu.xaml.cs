@@ -49,8 +49,6 @@ namespace MojeWydatki.Views
 
         private void RemoveExpense_Clicked(object sender, EventArgs e)
         {
-            //var vm = new ExpenseViewModel(tappedExpenseItem.Expense);
-            //vm.RemoveExpense.Execute(tappedExpenseItem.Expense);
             Background_tapped(sender, e);
         }
     }

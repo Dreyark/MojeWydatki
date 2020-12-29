@@ -66,7 +66,6 @@ namespace MojeWydatki.ViewModels
             TheDescription = expense.Description;
             TheValue = Convert.ToString(expense.Value);
             CategoryId = expense.CategoryId-1;
-            //System.Diagnostics.Debug.WriteLine("DATE : " + expense.Date.ToString("dd-MM-yyyy"));
 
             SaveExpenseCommand = new Command(async () =>
             {
@@ -148,7 +147,6 @@ namespace MojeWydatki.ViewModels
             set
             {
                 this.categoryId = value;
-                //System.Diagnostics.Debug.WriteLine(this.categoryId);
                 var args = new PropertyChangedEventArgs(nameof(CategoryList));
                 PropertyChanged?.Invoke(this, args);
             }
@@ -164,7 +162,6 @@ namespace MojeWydatki.ViewModels
             set
             {
                 this.date = value;
-                //System.Diagnostics.Debug.WriteLine(this.categoryId);
                 var args = new PropertyChangedEventArgs(nameof(TheDate));
                 PropertyChanged?.Invoke(this, args);
             }
@@ -180,7 +177,6 @@ namespace MojeWydatki.ViewModels
             set
             {
                 this.time = value;
-                //System.Diagnostics.Debug.WriteLine(this.categoryId);
                 var args = new PropertyChangedEventArgs(nameof(TheTime));
                 PropertyChanged?.Invoke(this, args);
             }

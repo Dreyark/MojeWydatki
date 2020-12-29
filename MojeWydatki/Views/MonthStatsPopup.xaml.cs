@@ -25,6 +25,7 @@ namespace MojeWydatki.Views
             InitializeComponent();
             DateEntry.ItemsSource = vm.DateList;
             DateEntry.Title = "Wybierz datę";
+            DateEntry.SelectedIndex = vm.SelectedDate;
         }
 
         private async void Background_tapped(object sender, EventArgs e)
@@ -43,10 +44,5 @@ namespace MojeWydatki.Views
             monthStatsView.NewSelectedDate = DateEntry.SelectedIndex;
             await CloseAllPopup();
         }
-
-        //private async void SetDateButton(object sender, EventArgs e)
-        //{
-        //    await CloseAllPopup();
-        //}
     }
 }

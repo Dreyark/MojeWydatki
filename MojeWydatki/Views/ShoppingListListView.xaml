@@ -36,17 +36,16 @@
                                 <RowDefinition Height="2"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"/>
                                 <ColumnDefinition Width="60"/>
                                 <ColumnDefinition Width="60"/>
-                                <ColumnDefinition Width="60"/>
-                                <ColumnDefinition Width="50"/>
                                 <ColumnDefinition Width="50"/>
                                 <ColumnDefinition Width="50"/>
                             </Grid.ColumnDefinitions>
                             <Label 
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Grid.ColumnSpan="2"
+                                Grid.ColumnSpan="6"
                                 Text="{Binding ListName}"
                                 FontSize="Large"
                                 TextColor="Black"/>

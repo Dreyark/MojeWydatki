@@ -47,7 +47,6 @@ namespace MojeWydatki.Views
 
             await Navigation.PushAsync(shoppingListView);
 
-            //System.Diagnostics.Debug.WriteLine("SELECTED : " + tappedExpenseItem.ID);
         }
         private void CallbackMethod()
         {

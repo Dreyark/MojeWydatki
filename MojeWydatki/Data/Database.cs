@@ -50,21 +50,13 @@ namespace MojeWydatki.Data
             }
         }
 
-        public List<MonthStatsViewModel.StatsByCategory> StatsByCategoryList(DateTime From, DateTime To)
+        public List<ChartEntryByCategory> StatsByCategoryList(DateTime From, DateTime To)
         {
-            var q = _database.QueryAsync<MonthStatsViewModel.StatsByCategory>(
+            var q = _database.QueryAsync<ChartEntryByCategory>(
                 @"Select Sum(Value) as Value, Category.CategoryTitle as Category from Category INNER JOIN Expense ON Category.ID = Expense.CategoryId WHERE
                 Expense.Date > '" + From.Ticks + "' AND Expense.Date <'" + To.Ticks + "' Group By CategoryId");
             return q.Result;
         }
-
-        //public List<ExpenseWithCategory> List(DateTime From, DateTime To)
-        //{
-        //    var q = _database.QueryAsync<ExpenseWithCategory>(
-        //        @"Select Expense.Description as Title, Expense.Value as Value, Category.CategoryTitle as Category from Category INNER JOIN Expense ON Category.ID = Expense.CategoryId WHERE
-        //        Expense.Date > '" + From.Ticks + "' AND Expense.Date <'" + To.Ticks + "' ORDER BY Value DESC LIMIT 10");
-        //    return q.Result;
-        //}
 
         public Summary ThreeMonthsStats(DateTime From, DateTime To)
         {

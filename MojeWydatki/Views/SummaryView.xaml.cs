@@ -38,7 +38,7 @@ namespace MojeWydatki.Views
                     ValueLabel = Convert.ToString(summaryViewModel.summary.ValuePerDay[i - 1]),
                 });
             }
-            Month1.Chart = new BarChart { Entries = entries };
+            Month1.Chart = new LineChart { Entries = entries };
             Month1.Chart.LabelTextSize = 29;
             var sub = summaryViewModel.summary.Budget - summaryViewModel.summary.Value;
             var perDay = Math.Round(summaryViewModel.summary.Value / summaryViewModel.summary.ValuePerDay.Length, 2);
@@ -64,7 +64,7 @@ namespace MojeWydatki.Views
                     ValueLabel = Convert.ToString(summaryViewModel.summary.ValuePerDay[i - 1]),
                 });
             }
-            Month2.Chart = new BarChart { Entries = entries };
+            Month2.Chart = new LineChart { Entries = entries };
             Month2.Chart.LabelTextSize = 29;
             sub = summaryViewModel.summary.Budget - summaryViewModel.summary.Value;
             perDay = Math.Round(summaryViewModel.summary.Value / summaryViewModel.summary.ValuePerDay.Length, 2);
@@ -90,7 +90,7 @@ namespace MojeWydatki.Views
                     ValueLabel = Convert.ToString(summaryViewModel.summary.ValuePerDay[i - 1]),
                 });
             }
-            Month3.Chart = new BarChart { Entries = entries };
+            Month3.Chart = new LineChart { Entries = entries };
             Month3.Chart.LabelTextSize = 29;
             sub = summaryViewModel.summary.Budget - summaryViewModel.summary.Value;
             perDay = Math.Round(summaryViewModel.summary.Value / summaryViewModel.summary.ValuePerDay.Length, 2);

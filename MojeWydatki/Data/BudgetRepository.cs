@@ -37,20 +37,5 @@ namespace MojeWydatki.Data.Interface
         {
             return _database.Table<Budget>().ToListAsync();
         }
-
-
-        //public async Task<Task<int>> SaveBudgetAsync(Budget budget)
-        //{
-        //    var z = await _database.Table<Budget>().Where(i => i.Date == budget.Date).FirstAsync();
-        //    if (budget.ID != 0 || z != null)
-        //    {
-        //        budget.ID = z.ID;
-        //        return _database.UpdateAsync(budget);
-        //    }
-        //    else
-        //    {
-        //        return _database.InsertAsync(budget);
-        //    }
-        //}
     }
 }

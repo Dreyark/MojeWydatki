@@ -15,7 +15,7 @@ namespace MojeWydatki.ViewModels
     public class MonthStatsViewModel
     {
 
-        public List<StatsByCategory> categoryChart;
+        public List<ChartEntryByCategory> categoryChart;
         public List<ExtendedExpense> ExtendedExpenseList;
         public List<DateTime> dateList;
         public List<String> CategoryList;
@@ -57,41 +57,13 @@ namespace MojeWydatki.ViewModels
 
         public void MakeStatsList(DateTime date)
         {
-            categoryChart = new List<StatsByCategory>();
+            categoryChart = new List<ChartEntryByCategory>();
             var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddSeconds(-1);
-            foreach (StatsByCategory i in App.Database.StatsByCategoryList(firstDayOfMonth, lastDayOfMonth))
+            foreach (ChartEntryByCategory i in App.Database.StatsByCategoryList(firstDayOfMonth, lastDayOfMonth))
             {
                 categoryChart.Add(i);
             }
         }
-
-        //    public void MostExpensiveExpenses()
-        //    {
-        //        BiggestExpensesList = new List<ExpenseWithCategory>();
-        //        var firstDayOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-        //        var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddSeconds(-1);
-        //        foreach (ExpenseWithCategory i in App.Database.List(firstDayOfMonth, lastDayOfMonth))
-        //        {
-        //            BiggestExpensesList.Add(i);
-        //        }
-        //    }
-
-
-
-        //}
-
-        public class StatsByCategory
-        {
-            public Decimal Value { get; set; }
-            public String Category { get; set; }
-        }
-
-        //public class ExpenseWithCategory
-        //{
-        //    public String Title { get; set; }
-        //    public Decimal Value { get; set; }
-        //    public String Category { get; set; }
-        //}
     }
 }

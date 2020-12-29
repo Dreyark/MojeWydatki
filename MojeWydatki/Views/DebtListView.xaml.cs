@@ -53,13 +53,11 @@ namespace MojeWydatki.Views
             if (isOpen == false)
             {
                 isOpen = true;
-                //Show FloatMenuItem1
                 FloatMenuItem1.IsVisible = true;
                 await FloatMenuItem1.TranslateTo(0, 0, 100);
                 await FloatMenuItem1.TranslateTo(0, -20, 100);
                 await FloatMenuItem1.TranslateTo(0, 0, 200);
 
-                //Show FloatMenuItem2
                 FloatMenuItem2.IsVisible = true;
                 await FloatMenuItem2.TranslateTo(0, 0, 100);
                 await FloatMenuItem2.TranslateTo(0, -20, 100);
@@ -69,13 +67,11 @@ namespace MojeWydatki.Views
             else
             {
                 isOpen = false;
-                //Hide FloatMenuItem1
                 await FloatMenuItem1.TranslateTo(0, 0, 100);
                 await FloatMenuItem1.TranslateTo(0, -20, 100);
                 await FloatMenuItem1.TranslateTo(0, 0, 200);
                 FloatMenuItem1.IsVisible = false;
 
-                //Hide FloatMenuItem2
                 await FloatMenuItem2.TranslateTo(0, 0, 100);
                 await FloatMenuItem2.TranslateTo(0, -20, 100);
                 await FloatMenuItem2.TranslateTo(0, 0, 200);

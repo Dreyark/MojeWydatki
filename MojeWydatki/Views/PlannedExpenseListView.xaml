@@ -36,21 +36,45 @@
                         <Grid Padding="12" RowSpacing="5" HeightRequest="40">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="2"/>
+                                <RowDefinition Height="15"/>
+                                <RowDefinition Height="15"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="60"/>
                                 <ColumnDefinition Width="60"/>
                                 <ColumnDefinition Width="60"/>
                                 <ColumnDefinition Width="50"/>
-                                <ColumnDefinition Width="50"/>
-                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="25"/>
                             </Grid.ColumnDefinitions>
                             <Label 
                                 Grid.Row="1"
+                                Grid.RowSpan="2"
                                 Grid.Column="0"
-                                Grid.ColumnSpan="5"
+                                Grid.ColumnSpan="3"
                                 Text="{Binding Description}"
-                                FontSize="Large"    
+                                FontSize="Medium"    
+                                TextColor="Black"/>
+                            <Label 
+                                Grid.Row="1"
+                                Grid.RowSpan="2"
+                                Grid.Column="3"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding Value, StringFormat='{0:F2} zł'}"
+                                FontSize="Medium"    
+                                TextColor="Black"/>
+                            <Label 
+                                Grid.Row="1"
+                                Grid.Column="5"
+                                Grid.ColumnSpan="4"
+                                Text="{Binding StartDate, StringFormat='Od: {0:dd/MM/yyyy}'}"
+                                FontSize="Small"
+                                TextColor="Black"/>
+                            <Label 
+                                Grid.Row="2"
+                                Grid.Column="5"
+                                Grid.ColumnSpan="4"
+                                Text="{Binding EndDate, StringFormat='Do: {0:dd/MM/yyyy}'}"
+                                FontSize="Small"    
                                 TextColor="Black"/>
                         </Grid>
                     </ViewCell>

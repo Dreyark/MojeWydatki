@@ -23,6 +23,7 @@ namespace MojeWydatki.Views
         public int NewSelectedDate;
         public MonthStatsView()
         {
+            SelectedDate = 1;
             InitializeComponent();
             Chart(DateTime.Now);
         }
