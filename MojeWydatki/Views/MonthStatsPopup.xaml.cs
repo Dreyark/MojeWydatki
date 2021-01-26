@@ -25,7 +25,6 @@ namespace MojeWydatki.Views
             InitializeComponent();
             DateEntry.ItemsSource = vm.DateList;
             DateEntry.Title = "Wybierz datę";
-            DateEntry.SelectedIndex = vm.SelectedDate;
         }
 
         private async void Background_tapped(object sender, EventArgs e)

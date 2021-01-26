@@ -21,10 +21,10 @@ namespace MojeWydatki.Views
             debtViewModel.TheAmILender = amILender;
             if (amILender)
             {
-                LendFrom.Text = "Komu porzyczyłem";
+                LendFrom.Text = "Komu pożyczyłem";
             }
             else
-            { LendFrom.Text = "Porzyczyłem od"; 
+            { LendFrom.Text = "Pożyczyłem od"; 
             }
             BorrowDate.Date = DateTime.Now;
             DateOfDelivery.MinimumDate = DateTime.Now.AddDays(1);

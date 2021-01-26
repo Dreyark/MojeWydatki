@@ -36,7 +36,6 @@ namespace MojeWydatki.ViewModels
                 PropertyChanged?.Invoke(this, args);
             }
         }
-
         public Command SaveCategoryCommand { get; }
     }
 }

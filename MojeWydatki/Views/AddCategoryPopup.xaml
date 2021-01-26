@@ -8,28 +8,25 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
-
             <Image>
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Background_tapped" NumberOfTapsRequired="1"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Grid x:Name="body" HorizontalOptions="Center" VerticalOptions="Center">
-                <Frame CornerRadius="25" BackgroundColor="AliceBlue"
-                       WidthRequest="350" HeightRequest="250">
-                    <StackLayout Padding="10">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="5"/>
-                                <RowDefinition Height="50"/>
-                                <RowDefinition Height="80"/>
-                                <RowDefinition Height="80"/>
-                            </Grid.RowDefinitions>
+            <Frame CornerRadius="25" BackgroundColor="AliceBlue" WidthRequest="350" HeightRequest="250" HorizontalOptions="Center" VerticalOptions="Center">
+                <StackLayout Padding="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="80"/>
+                        </Grid.RowDefinitions>
 
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5"/>
-                            </Grid.ColumnDefinitions>
-                            <Editor 
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5"/>
+                        </Grid.ColumnDefinitions>
+                        <Editor 
                                 x:Name="CategoryEntry"
                                 Grid.Row="1"
                                 Grid.RowSpan="1"
@@ -38,11 +35,10 @@
                                 Text="{Binding TheCategoryTitle}"
                                 TextChanged="Entry_CategoryChanged"
                                 />
-                            <Button x:Name="AddCategoryButton" IsVisible="false" Grid.Row="3" Grid.ColumnSpan="6" Text="Dodaj Kategorię" Command="{Binding SaveCategoryCommand}" Clicked="AddCategory_Clicked" CornerRadius="10" Margin="5,5,5,5"/>
-                        </Grid>
-                    </StackLayout>
-                </Frame>
-            </Grid>
+                        <Button x:Name="AddCategoryButton" IsVisible="false" Grid.Row="3" Grid.ColumnSpan="6" Text="Dodaj Kategorię" Command="{Binding SaveCategoryCommand}" Clicked="AddCategory_Clicked" CornerRadius="10" Margin="5,5,5,5"/>
+                    </Grid>
+                </StackLayout>
+            </Frame>
         </Grid>
     </ContentPage.Content>
 </pages:PopupPage>
