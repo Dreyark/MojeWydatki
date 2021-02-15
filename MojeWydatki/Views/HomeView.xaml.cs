@@ -30,6 +30,7 @@ namespace MojeWydatki.Views
             SetupView();
             await expList.MakeExpenseList();
             var list = expList.ExtendedExpenseList.OrderByDescending(i=>i.Expense.Date).Take(5);
+            listView.ItemsSource = null;
             listView.ItemsSource = list;
             vm.Height = list.Count() * 78;
             base.OnAppearing();

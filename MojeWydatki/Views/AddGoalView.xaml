@@ -76,7 +76,7 @@
                 Grid.Row="4"
                 Grid.Column="1"
                 Grid.ColumnSpan="5"
-                Text="Kwota Celu"
+                Text="Kwota celu"
                 TextColor="White"
                 FontSize="20"
                 VerticalTextAlignment="Center"

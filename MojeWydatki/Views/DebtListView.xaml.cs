@@ -23,12 +23,13 @@ namespace MojeWydatki.Views
 
         protected override async void OnAppearing()
         {
-            base.OnAppearing();
-
             var vm = BindingContext as DebtListViewModel;
+            CompletelistView.ItemsSource = null;
+            InProgresslistView.ItemsSource = null;
             await vm.MakeDebtList();
             CompletelistView.ItemsSource = vm.DebtList.Where(i => i.Debt.Progress >=1);
             InProgresslistView.ItemsSource = vm.DebtList.Where(i => i.Debt.Progress < 1);
+            base.OnAppearing();
         }
 
         async void OnItemTapped(object sender, ItemTappedEventArgs e)

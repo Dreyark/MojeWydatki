@@ -39,11 +39,11 @@ namespace MojeWydatki.Views
 
         protected override async void OnAppearing()
         {
-            base.OnAppearing();
-
             var vm = BindingContext as PlannedExpenseListViewModel;
+            listView.ItemsSource = null;
             await vm.MakePlannedExpenseList();
             listView.ItemsSource = vm.PlannedList;
+            base.OnAppearing();
         }
     }
 }

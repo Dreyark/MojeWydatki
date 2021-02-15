@@ -30,12 +30,13 @@ namespace MojeWydatki.Views
 
         protected override async void OnAppearing()
         {
-            base.OnAppearing();
-
             var vm = BindingContext as GoalListViewModel;
+            InProgresslistView.ItemsSource = null;
+            CompletelistView.ItemsSource = null;
             await vm.MakeGoalList();
             InProgresslistView.ItemsSource = vm.GoalList.Where(i => i.IsFinished == false);
             CompletelistView.ItemsSource = vm.GoalList.Where(i => i.IsFinished == true);
+            base.OnAppearing();
         }
 
         async void OnItemTapped(object sender, ItemTappedEventArgs e)

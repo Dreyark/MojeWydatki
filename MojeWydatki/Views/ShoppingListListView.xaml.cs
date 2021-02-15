@@ -29,12 +29,11 @@ namespace MojeWydatki.Views
 
         protected override async void OnAppearing()
         {
-            base.OnAppearing();
-
             var vm = BindingContext as ShoppingListListViewModel;
+            listView.ItemsSource = null;
             await vm.MakeShoppingListList();
             listView.ItemsSource = vm.ShoppingList;
-            
+            base.OnAppearing();
         }
 
         async void OnItemTapped(object sender, ItemTappedEventArgs e)

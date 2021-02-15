@@ -120,7 +120,7 @@ namespace MojeWydatki.ViewModels
             set
             {
                 this.value = value;
-                if (this.value == "")
+                if (this.value == "" || this.value == "," || this.value == "." || this.value == null)
                 {
                     this.value = "0";
                 }

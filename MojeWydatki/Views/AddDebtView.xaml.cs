@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -24,7 +25,8 @@ namespace MojeWydatki.Views
                 LendFrom.Text = "Komu pożyczyłem";
             }
             else
-            { LendFrom.Text = "Pożyczyłem od"; 
+            {
+                LendFrom.Text = "Pożyczyłem od";
             }
             BorrowDate.Date = DateTime.Now;
             DateOfDelivery.MinimumDate = DateTime.Now.AddDays(1);
@@ -40,11 +42,23 @@ namespace MojeWydatki.Views
             DateOfDelivery.MinimumDate = BorrowDate.Date.AddDays(1);
         }
 
-        private void EndDate_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        void DebtValue_Changed(object sender, TextChangedEventArgs e)
         {
-            if (DateOfDelivery.Date < BorrowDate.Date)
+            var oldText = e.OldTextValue;
+            var newText = e.NewTextValue;
+            if (e.NewTextValue == null)
             {
-                DateOfDelivery.Date = BorrowDate.Date.AddDays(1);
+
+            }
+            else
+            {
+                bool is2 = Regex.IsMatch(DebtValue.Text, @"^[0-9]+((\.|\,)[0-9]{0,2})?$|^$");
+                if (!is2)
+                {
+
+                    DebtValue.Text = e.OldTextValue;
+
+                }
             }
         }
     }

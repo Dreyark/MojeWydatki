@@ -22,11 +22,11 @@ namespace MojeWydatki.Views
 
         protected override async void OnAppearing()
         {
-            base.OnAppearing();
-
             var vm = BindingContext as ExpenseListViewModel;
+            listView.ItemsSource = null;
             await vm.MakeExpenseList();
             listView.ItemsSource = vm.ExtendedExpenseList.OrderByDescending(i=>i.Expense.Date);
+            base.OnAppearing();
         }
 
         async void OnItemTapped(object sender, ItemTappedEventArgs e)

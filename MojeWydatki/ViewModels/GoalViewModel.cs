@@ -30,7 +30,14 @@ namespace MojeWydatki.ViewModels
                 goal.StartDate = DateTime.Now;
                 goal.EndDate = TheEndDate;
                 goal.Progress = goal.CurrentValue / goal.GoalValue;
-                goal.IsFinished = false;
+                if(goal.Progress >= 1)
+                {
+                    goal.IsFinished = true;
+                }
+                else
+                {
+                    goal.IsFinished = false;
+                }
                 await goalRep.SaveGoalAsync(goal);
             });
         }
@@ -108,7 +115,7 @@ namespace MojeWydatki.ViewModels
             set
             {
                 this.currentValue = value;
-                if (this.currentValue == "")
+                if (this.currentValue == "" || this.currentValue == "," || this.currentValue == "." || this.currentValue == null)
                 {
                     this.currentValue = "0";
                 }
@@ -131,7 +138,7 @@ namespace MojeWydatki.ViewModels
             set
             {
                 this.addValue = value;
-                if (this.addValue == "")
+                if (this.addValue == "" || this.addValue == "," || this.addValue == "." || this.addValue == null)
                 {
                     this.addValue = "0";
                 }
@@ -154,7 +161,7 @@ namespace MojeWydatki.ViewModels
             set
             {
                 this.goalValue = value;
-                if (this.TheGoalValue == "")
+                if (this.goalValue == "" || this.goalValue == "," || this.goalValue == "." || this.goalValue == null)
                 {
                     this.TheGoalValue = "0";
                 }

@@ -126,14 +126,14 @@
             x:FieldModifier="public"
             ItemTapped="OnItemTapped"
             HasUnevenRows="true"
-            Grid.RowSpan="6"
-            Grid.ColumnSpan="8">
+                    Grid.ColumnSpan="6"
+                    Grid.RowSpan="6">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <Grid Padding="10">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="6"/>
+                                        <RowDefinition Height="2"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="8"/>
@@ -141,34 +141,38 @@
                                     <Label 
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Grid.ColumnSpan="2"
+                                Grid.ColumnSpan="6"
                                 Text="{Binding Debt.Person}"
                                 FontSize="Large"
                                 TextColor="Black"/>
                                     <Label 
                                 Grid.Row="2"
                                 Grid.Column="1"
-                                Grid.ColumnSpan="2"
+                                Grid.ColumnSpan="6"
                                 Text="{Binding Debt.Description}"
-                                FontSize="Large"
+                                FontSize="Medium"
                                 TextColor="Black"/>
                                     <ProgressBar 
                                 x:Name="progress"
                                 ProgressColor="{Binding Color}" 
                                 Grid.Row="3"
-                                Grid.ColumnSpan="4"
+                                Grid.RowSpan="2"
+                                Grid.ColumnSpan="6"
                                 Progress="{Binding Debt.Progress}"/>
                                     <Label 
                                 x:Name="curVal"
                                 Grid.Row="3"
-                                Grid.Column="2"
+                                Grid.Column="3"
+                                Grid.ColumnSpan="2"
                                 Text="{Binding Debt.CurrentValue, StringFormat='{0:F2} zł'}"
                                 FontSize="Small"
                                 TextColor="Black"/>
                                     <Label 
                                 x:Name="DebtVal"
                                 Grid.Row="3"
-                                Grid.Column="4"
+                                Grid.Column="5"
+                                HorizontalOptions="End"
+                                Grid.ColumnSpan="2"
                                 Text="{Binding Debt.DebtValue, StringFormat='{0:F2} zł'}"
                                 FontSize="Small"
                                 TextColor="Black"/>

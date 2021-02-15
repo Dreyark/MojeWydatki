@@ -23,12 +23,19 @@ namespace MojeWydatki.Views
         {
             var oldText = e.OldTextValue;
             var newText = e.NewTextValue;
-            bool is2 = Regex.IsMatch(Value.Text, @"^[0-9]+((\.|\,)[0-9]{0,2})?$|^$");
-            if (!is2)
+            if (e.NewTextValue == null)
             {
 
-                Value.Text = e.OldTextValue;
+            }
+            else
+            {
+                bool is2 = Regex.IsMatch(Value.Text, @"^[0-9]+((\.|\,)[0-9]{0,2})?$|^$");
+                if (!is2)
+                {
 
+                    Value.Text = e.OldTextValue;
+
+                }
             }
         }
         public void DeleteClicked(object sender, EventArgs e)
@@ -42,12 +49,12 @@ namespace MojeWydatki.Views
 
         private void StartDate_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-          EndDate.MinimumDate = StartDate.Date.AddDays(1);
+            EndDate.MinimumDate = StartDate.Date.AddDays(1);
         }
 
         private void EndDate_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if(EndDate.Date<StartDate.Date)
+            if (EndDate.Date < StartDate.Date)
             {
                 EndDate.Date = StartDate.Date.AddDays(1);
             }

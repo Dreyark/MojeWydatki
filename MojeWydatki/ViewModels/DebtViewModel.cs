@@ -135,8 +135,8 @@ namespace MojeWydatki.ViewModels
             set
             {
                 this.addValue = value;
-                if (this.addValue == "")
-                {
+                if (this.addValue == "" || this.addValue == "," || this.addValue == "." || this.addValue == null)
+                    {
                     this.addValue = "0";
                 }
                 else
