@@ -1,26 +1,27 @@
+App made in Xamarin Forms
 Cele:
-- Dodawanie pokategoryzowanych wydatków 
+- Dodawanie pokategoryzowanych wydatkÃ³w 
 - Dodawanie przychodu
-- Zak³adka z list¹ wydatków
-- Zak³adka do planowania tansakcji. 
-- Zak³adka z Celami/odk³adaniem pieniêdzy
-- Zak³adka z po¿yczonymi pieniêdzmi
-- Zak³adka ze statystykami miesi¹ca
-- Zak³adka podsumowuj¹ca trzy ostatnie miesi¹ce
-- Mo¿liwoœæ ustawienia powiadomienia na dan¹ godzinê by pamiêtaæ o wpisaniu danych z dnia do aplikacji.(nie wiem czy wykonalne)
-- Zak³adka z list¹ zakupów
+- ZakÅ‚adka z listÄ… wydatkÃ³w
+- ZakÅ‚adka do planowania tansakcji. 
+- ZakÅ‚adka z Celami/odkÅ‚adaniem pieniÄ™dzy
+- ZakÅ‚adka z poÅ¼yczonymi pieniÄ™dzmi
+- ZakÅ‚adka ze statystykami miesiÄ…ca
+- ZakÅ‚adka podsumowujÄ…ca trzy ostatnie miesiÄ…ce
+- MoÅ¼liwoÅ›Ä‡ ustawienia powiadomienia na danÄ… godzinÄ™ by pamiÄ™taÄ‡ o wpisaniu danych z dnia do aplikacji.(nie wiem czy wykonalne)
+- ZakÅ‚adka z listÄ… zakupÃ³w
 
 
 Do 20.11
-- Zak³adka z list¹ wydatków
-- Zak³adka z Celami/odk³adaniem pieniêdzy
-- Zak³adka z po¿yczonymi pieniêdzmi
-- Zak³adka ze statystykami miesi¹ca
-- Zak³adka z list¹ zakupów
+- ZakÅ‚adka z listÄ… wydatkÃ³w
+- ZakÅ‚adka z Celami/odkÅ‚adaniem pieniÄ™dzy
+- ZakÅ‚adka z poÅ¼yczonymi pieniÄ™dzmi
+- ZakÅ‚adka ze statystykami miesiÄ…ca
+- ZakÅ‚adka z listÄ… zakupÃ³w
 
 Lista zmian:
 29.10
-- Wstêpna lista wydatków
+- WstÄ™pna lista wydatkÃ³w
 
 02.11
 - Kategorie
@@ -31,12 +32,15 @@ Lista zmian:
 - Popoup menu
 
 11.11
-- Lista zakupów
+- Lista zakupÃ³w
 
 14.11
-- Zak³adka d³ugów
-- Strona g³ówna
+- ZakÅ‚adka dÅ‚ugÃ³w
+- Strona gÅ‚Ã³wna
 
 19.11
-- Miesiêczne statystyki
-- Ustalanie miesiêcznego bud¿etu
+- MiesiÄ™czne statystyki
+- Ustalanie miesiÄ™cznego budÅ¼etu
+
+### Screenshot
+ ![MCaNsyZ](https://github.com/Dreyark/MojeWydatki/assets/16175400/147c5a93-23b8-4811-9631-eece274b2bba)
