@@ -1,4 +1,5 @@
-App made in Xamarin Forms
+App made in Xamarin Forms 
+
 Cele:
 - Dodawanie pokategoryzowanych wydatków 
 - Dodawanie przychodu
